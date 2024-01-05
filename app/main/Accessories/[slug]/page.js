@@ -187,7 +187,7 @@ export default function Page({params}) {
             </p>
             <div className="flex">
                 <span className="title-font font-medium text-2xl text-gray-900">₹{price}</span>
-                <Button onClick={() => {add(ele);}} className="flex ml-auto bg-indigo-700 text-white border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add To Cart</Button>
+                <Button onClick={() => {add(ele);}} className="flex ml-auto text-white bg-indigo-700 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add To Cart</Button>
                 <Button onClick={() => {wish(ele);}} className="rounded-full w-10 h-10 bg-indigo-700 p-0 border-1 inline-flex items-center justify-center ml-4 hover:bg-indigo-600">
                     <FavoriteIcon style={{color:'red'}}></FavoriteIcon>
                 </Button>
