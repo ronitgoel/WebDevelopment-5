@@ -40,7 +40,7 @@ export default function Orderedlist({children}) {
         console.log("Error is ", error);
         setOrderedlist([]);
     }
-  }, [])
+  }, [session, email])
   function savecart(mycart)
   {
     try {

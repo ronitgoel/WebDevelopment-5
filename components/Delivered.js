@@ -40,7 +40,7 @@ export default function Deliveredlist({children}) {
         console.log("Error is ", error);
         setDeliveredlist([]);
     }
-  }, [])
+  }, [session, email])
   function savecart(mycart)
   {
     try {

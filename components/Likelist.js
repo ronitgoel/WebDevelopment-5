@@ -40,7 +40,7 @@ export default function Likelist({children}) {
         console.log("Error is ", error);
         setLikelist([]);
     }
-  }, [])
+  }, [session, email])
   function savecart(mycart)
   {
       try {

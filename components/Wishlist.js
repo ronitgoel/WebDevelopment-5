@@ -40,7 +40,7 @@ export default function Wishlist({children}) {
         console.log("Error is ", error);
         setWishlist([]);
     }
-  }, [])
+  }, [session, email])
   function savecart(mycart)
   {
     try {
