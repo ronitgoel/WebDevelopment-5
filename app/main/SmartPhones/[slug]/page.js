@@ -226,7 +226,7 @@ export default function Page({params}) {
     </div>
     <br></br>
     <br></br>
-    <div className="text-5xl font-bold text-blue-950 text-center">
+    <div className="text-4xl sm:text-5xl font-bold text-blue-950 text-center">
         More Recommendations For You
     </div>
     <br></br>

@@ -191,7 +191,7 @@ export default function Page({params}) {
             <p className="leading-relaxed font-bold text-lg">
                 {details}
             </p>
-            <div className="flex mt-6 items-center pb-4 border-b-2 border-red-800 mb-5">
+            <div className="flex flex-col sm:flex-row mt-6 pb-4 border-b-2 border-red-800 mb-5">
                 <div className="flex mr-4">
                     <span className="mr-3 font-bold text-lg">Color:</span>
                     <div className="bg-orange-200">
@@ -202,6 +202,7 @@ export default function Page({params}) {
                         </ToggleButtonGroup>
                     </div>
                 </div>
+                <br></br>
                 <div className="flex">
                     <span className="mr-3 font-bold text-lg">Size:</span>
                     <div className="bg-orange-200">
@@ -239,7 +240,7 @@ export default function Page({params}) {
     </div>
     <br></br>
     <br></br>
-    <div className="text-5xl font-bold text-blue-950 text-center">
+    <div className="text-4xl sm:text-5xl font-bold text-blue-950 text-center">
         More Recommendations For You
     </div>
     <br></br>
