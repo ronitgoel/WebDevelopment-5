@@ -115,7 +115,7 @@ export default function Register() {
                         </form>
                     </div>
                     <p className="mt-10 text-center text-sm font-bold text-black">
-                       By continuing, you agree to DevCart's Conditions of Use and Privacy Notice.
+                       By continuing, you agree to DevCart Conditions of Use and Privacy Notice.
                     </p>
                     <p className="mt-10 text-center text-sm text-black">
                         Already have an account?

@@ -40,7 +40,7 @@ export default function Cart({children}) {
         console.log("Error is ", error);
         setCart([]);
     }
-  }, [session])
+  }, [email, session])
   function savecart(mycart)
   {
     try {

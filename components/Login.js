@@ -59,7 +59,7 @@ export default function Login() {
                     </div>
                 </form>
                 <p className="font-bold mt-10 text-center text-lg text-black">
-                    Don't have an account?
+                    Do not have an account?
                     <Link href="./Signup" className="font-bold leading-6 bg-yellow-400 text-pink-600 hover:text-blue-800"> Register Yourself</Link>
                 </p>
             </div>
