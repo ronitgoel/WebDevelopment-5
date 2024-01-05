@@ -331,7 +331,7 @@ export default function Home() {
                 <CardHeader
                   title="Upto 40% Off | Baby Care And Expecting Mothers"
                 />
-                <Image className="h-[358px] w-[500px]" src="/Card (1).png" width={500} height={400} alt="Baby Care"></Image>
+                <Image className="h-[358px] w-[500px]" src="/Card1.png" width={500} height={400} alt="Baby Care"></Image>
                 <CardContent>
                   <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/Babycare">Visit The Store</Link></Button></div>
                 </CardContent>
@@ -340,7 +340,7 @@ export default function Home() {
                 <CardHeader
                   title="Combo Packs Of Shirts| Under ₹599"
                 />
-                <Image className="h-[358px] w-[500px]" src="/Card (2).png" width={500} height={400} alt="Shirts"></Image>
+                <Image className="h-[358px] w-[500px]" src="/Card2.png" width={500} height={400} alt="Shirts"></Image>
                 <CardContent>
                 <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/Clothing">Visit The Store</Link></Button></div>
                 </CardContent>
@@ -349,7 +349,7 @@ export default function Home() {
                 <CardHeader
                   title="Automotive Essentials | Upto 60% off"
                 />
-                <Image className="h-[358px] w-[500px]" src="/Card (3).png" width={500} height={400} alt="Automotive Essesntials"></Image>
+                <Image className="h-[358px] w-[500px]" src="/Card3.png" width={500} height={400} alt="Automotive Essesntials"></Image>
                 <CardContent>
                 <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/AutomotiveEssentials">Visit The Store</Link></Button></div>
                 </CardContent>
@@ -358,7 +358,7 @@ export default function Home() {
                 <CardHeader
                   title="Under ₹499 | Pocket Friendly Fashion"
                 />
-                <Image className="h-[358px] w-[500px]" src="/Card (4).png" width={500} height={400} alt="Fashion"></Image>
+                <Image className="h-[358px] w-[500px]" src="/Card4.png" width={500} height={400} alt="Fashion"></Image>
                 <CardContent>
                 <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/Clothing">Visit The Store</Link></Button></div>
                 </CardContent>
@@ -367,7 +367,7 @@ export default function Home() {
                 <CardHeader
                   title="Electronic Devices For Offices"
                 />
-                <Image className="h-[358px] w-[500px]" src="/Card (5).png" width={500} height={400} alt="Electronic Items"></Image>
+                <Image className="h-[358px] w-[500px]" src="/Card5.png" width={500} height={400} alt="Electronic Items"></Image>
                 <CardContent>
                 <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/ElectronicDevices">Visit The Store</Link></Button></div>
                 </CardContent>
@@ -376,7 +376,7 @@ export default function Home() {
                 <CardHeader
                   title="Starting ₹99 | Baby Essentials And Toys"
                 />
-                <Image className="h-[358px] w-[500px]" src="/Card (6).png" width={500} height={400} alt="Baby Care"></Image>
+                <Image className="h-[358px] w-[500px]" src="/Card6.png" width={500} height={400} alt="Baby Care"></Image>
                 <CardContent>
                 <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/Babycare">Visit The Store</Link></Button></div>
                 </CardContent>
@@ -385,7 +385,7 @@ export default function Home() {
                 <CardHeader
                   title="Upto 60% Off | Styles For Women"
                 />
-                <Image className="h-[358px] w-[500px]" src="/Card (7).png" width={500} height={400} alt="Women Style"></Image>
+                <Image className="h-[358px] w-[500px]" src="/Card7.png" width={500} height={400} alt="Women Style"></Image>
                 <CardContent>
                 <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/Clothing">Visit The Store</Link></Button></div>
                 </CardContent>
@@ -394,7 +394,7 @@ export default function Home() {
                 <CardHeader
                   title="Appliances For Home | Upto 55% Off"
                 />
-                <Image className="h-[358px] w-[500px]" src="/Card (8).png" width={500} height={400} alt="Appliances"></Image>
+                <Image className="h-[358px] w-[500px]" src="/Card8.png" width={500} height={400} alt="Appliances"></Image>
                 <CardContent>
                 <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/ElectronicDevices">Visit The Store</Link></Button></div>
                 </CardContent>
@@ -403,7 +403,7 @@ export default function Home() {
                 <CardHeader
                   title="Revamp Your Home In Style In Budget Friendly Way"
                 />
-                <Image className="h-[358px] w-[500px]" src="/Card (9).png" width={500} height={400} alt="Home Decor"></Image>
+                <Image className="h-[358px] w-[500px]" src="/Card9.png" width={500} height={400} alt="Home Decor"></Image>
                 <CardContent>
                 <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/HomeDecor">Visit The Store</Link></Button></div>
                 </CardContent>
@@ -412,7 +412,7 @@ export default function Home() {
                 <CardHeader
                   title="Upto 70% Off | Clearance Store"
                 />
-                <Image className="h-[358px] w-[500px]" src="/Card (10).png" width={500} height={400} alt="Devices"></Image>
+                <Image className="h-[358px] w-[500px]" src="/Card10.png" width={500} height={400} alt="Devices"></Image>
                 <CardContent>
                 <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/ElectronicDevices">Visit The Store</Link></Button></div>
                 </CardContent>
@@ -421,7 +421,7 @@ export default function Home() {
                 <CardHeader
                   title="Upto 60% Off | Styles For Men"
                 />
-                <Image className="h-[358px] w-[500px]" src="/Card (11).png" width={500} height={400} alt="Men Style"></Image>
+                <Image className="h-[358px] w-[500px]" src="/Card11.png" width={500} height={400} alt="Men Style"></Image>
                 <CardContent>
                 <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/Clothing">Visit The Store</Link></Button></div>
                 </CardContent>
@@ -430,7 +430,7 @@ export default function Home() {
                 <CardHeader
                   title="Banarsi Sarees For Women | Upto 40% Off"
                 />
-                <Image className="h-[358px] w-[500px]" src="/Card (12).png" width={500} height={400} alt="Women"></Image>
+                <Image className="h-[358px] w-[500px]" src="/Card12.png" width={500} height={400} alt="Women"></Image>
                 <CardContent>
                 <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/Clothing">Visit The Store</Link></Button></div>
                 </CardContent>

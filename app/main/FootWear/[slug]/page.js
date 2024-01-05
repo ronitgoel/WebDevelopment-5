@@ -55,7 +55,7 @@ export default function Page({params}) {
   });
   const [product, setProduct] = React.useState([]);
   useEffect(() => {
-     fetch("http://localhost:3000/api/footwears")
+     fetch(`${process.env.NEXT_PUBLIC_API_URL}api/footwears`)
      .then(res => res.json())
      .then((data) => setProduct(data["Footwears"]));
   }, []);

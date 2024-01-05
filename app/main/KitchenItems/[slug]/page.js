@@ -52,7 +52,7 @@ export default function Page({params}) {
   });
   const [product, setProduct] = React.useState([]);
   useEffect(() => {
-     fetch("http://localhost:3000/api/kitchenitems")
+     fetch(`${process.env.NEXT_PUBLIC_API_URL}api/kitchenitems`)
      .then(res => res.json())
      .then((data) => setProduct(data["Kitchenitems"]));
   }, []);

@@ -81,7 +81,7 @@ export default function Page() {
     const [product, setProduct] = React.useState([]);
     const [filterproduct, setfilterProduct] = React.useState([]);
     useEffect(() => {
-       fetch("http://localhost:3000/api/babies")
+       fetch(`${process.env.NEXT_PUBLIC_API_URL}api/babies`)
        .then(res => res.json())
        .then((data) => {
         setProduct(data["Babies"]);
