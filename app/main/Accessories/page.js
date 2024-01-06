@@ -7,7 +7,6 @@ import Drawer from '@mui/material/Drawer';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
 import Radio from '@mui/material/Radio';
 import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
@@ -291,7 +290,7 @@ export default function Page() {
                 }}
                 >
                     <FormControl style={{marginLeft:'1rem'}}>
-                        <FormLabel className = "text-red-500 font-bold text-xl" id="demo-controlled-radio-buttons-group">Sort By</FormLabel>
+                        <div className = "text-red-500 font-bold text-xl" id="demo-controlled-radio-buttons-group">Sort By</div>
                         <RadioGroup
                             aria-labelledby="demo-controlled-radio-buttons-group"
                             name="controlled-radio-buttons-group"
@@ -304,7 +303,7 @@ export default function Page() {
                         </RadioGroup>
                     </FormControl>
                     <FormControl style={{marginLeft:'1rem'}}>
-                        <FormLabel className = "text-red-500 font-bold text-xl">Select Your Brand</FormLabel>
+                        <div className = "text-red-500 font-bold text-xl">Select Your Brand</div>
                             <FormControlLabel className = "text-white font-bold hover:bg-yellow-500" value="Alextreme" control={<Checkbox checked={checked.checked1} onChange={handleChangeBox} inputProps={{ 'aria-label': 'controlled' }}/>} label="Alextreme" />
                             <FormControlLabel className = "text-white font-bold hover:bg-yellow-500" value="Godrej" control={<Checkbox checked={checked.checked2} onChange={handleChangeBox} inputProps={{ 'aria-label': 'controlled' }}/>} label="Godrej" />
                             <FormControlLabel className = "text-white font-bold hover:bg-yellow-500" value="Chillyfit" control={<Checkbox checked={checked.checked3} onChange={handleChangeBox} inputProps={{ 'aria-label': 'controlled' }}/>} label="Chillyfit" />
@@ -314,12 +313,12 @@ export default function Page() {
                             <FormControlLabel className = "text-white font-bold hover:bg-yellow-500" value="Carfrill" control={<Checkbox checked={checked.checked7} onChange={handleChangeBox} inputProps={{ 'aria-label': 'controlled' }}/>} label="Carfrill" />
                     </FormControl>
                     <FormControl  style={{marginLeft:'1rem'}}>
-                        <FormLabel className = "text-red-500 font-bold text-xl">Select Your Category</FormLabel>
+                        <div className = "text-red-500 font-bold text-xl">Select Your Category</div>
                             <FormControlLabel className = "text-white font-bold hover:bg-yellow-500" value="CleaningKits" control={<Checkbox checked={check.checked8} onChange={handleChangecat} inputProps={{ 'aria-label': 'controlled' }}/>} label="CleaningKits" />
                             <FormControlLabel className = "text-white font-bold hover:bg-yellow-500" value="Automobile" control={<Checkbox checked={check.checked9} onChange={handleChangecat} inputProps={{ 'aria-label': 'controlled' }}/>} label="Automobile" />
                             <FormControlLabel className = "text-white font-bold hover:bg-yellow-500" value="Mobile" control={<Checkbox checked={check.checked10} onChange={handleChangecat} inputProps={{ 'aria-label': 'controlled' }}/>} label="Mobile" />
                     </FormControl>
-                    <FormLabel  style={{marginLeft:'1rem'}} className = "text-red-500 font-bold text-xl">Enter Your Range Of Price</FormLabel>
+                    <div  style={{marginLeft:'1rem'}} className = "text-red-500 font-bold text-xl">Enter Your Range Of Price</div>
                     <div className = "bg-white">
                         <Box sx={{ width: 230 }} style={{marginLeft:'1rem'}}>
                             <Slider
