@@ -26,7 +26,7 @@ export default function page() {
       <br></br>
       <br></br>
       <div className = "text-center">
-        <Button size='lg' as={Link} href="/" variant="solid" endContent={<SendIcon />} className="text-yellow-500 bg-blue-950 hover:bg-pink-600 text-center">
+        <Button size='lg' href="/" variant="solid" endContent={<SendIcon />} className="text-yellow-500 bg-blue-950 hover:bg-pink-600 text-center">
           Continue Shopping
         </Button>
       </div>
