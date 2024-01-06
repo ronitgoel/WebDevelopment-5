@@ -13,8 +13,8 @@ export default function Scroll() {
         window.onscroll = function() {myFunction()};
       }, []);
   return (
-    <div className="progress-container">
-       <div className="progress-bar" id="myBar" style={{width:'0%'}}></div>
+    <div className="w-[100%] h-[10px] fixed bg-yellow-500">
+       <div className="fixed h-[10px] bg-pink-500" id="myBar" style={{width:'0%'}}></div>
     </div>
   )
 }

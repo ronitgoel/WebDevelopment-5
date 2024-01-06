@@ -1,7 +1,7 @@
 'use client'
+import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import Register from '@/components/Register';
-import { useRouter } from 'next/navigation';
 
 export default function SignUp() {
   const {data : session} = useSession();

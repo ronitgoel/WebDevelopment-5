@@ -1,6 +1,6 @@
 'use client'
 import * as React from 'react';
-import { Button } from '@mui/material';
+import { Button } from '@nextui-org/react';
 import SendIcon from '@mui/icons-material/Send';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useContext } from 'react';
@@ -49,24 +49,22 @@ export default function RootLayout({ children }) {
       <div>
           {children}
           <div className="bg-slate-700 p-[1rem]">
-              <div style={{backgroundColor:"#FFC300"}}>
+              <div style={{backgroundColor:"#FFC300"}} className="rounded-xl">
                   <div>
-                      <div className="flex justify-center flex-row text-xl sm:text-3xl text-center font-bold text-red-500" style={{padding:'0.2rem'}}>
-                        <div className="flex flex-row justify-center mt-2">Subtotal = ₹{subtotal}</div>
-                        <Link href = "/main/Registered" className="flex flex-row justify-center">
-                          <Button size='large' onClick={clear2} variant="contained" endIcon={<SendIcon />} className="text-yellow-500 bg-blue-950 hover:bg-pink-600 justify-center ml-3">
+                      <div className="flex justify-evenly flex-row text-xl sm:text-3xl text-center font-bold text-red-500" style={{padding:'0.2rem'}}>
+                        <div className="flex flex-row mt-2">Subtotal = ₹{subtotal}</div>
+                          <Button href = "/main/Registered" as={Link} size='lg' onClick={clear2} color="secondary" variant="solid" endContent={<SendIcon />} className="text-yellow-500 bg-blue-950 justify-center font-bold">
                             CHECKOUT
                           </Button>
-                        </Link>
                       </div>
                   </div>
               </div>
           </div>
           <div className="bg-slate-700 p-[1rem]">
-              <div style={{backgroundColor:"#FFC300"}}>
+              <div style={{backgroundColor:"#FFC300"}} className="rounded-xl">
                       <div className="text-3xl text-center font-bold text-red-500" style={{padding:'0.2rem'}}>
-                      <Button size='large' onClick={clear} variant="contained" endIcon={<DeleteIcon />} className=" text-yellow-500 bg-red-700 hover:bg-red-800">
-                          ClearCart
+                      <Button size='lg' onClick={clear} variant="solid" endContent={<DeleteIcon />} className=" text-yellow-500 bg-red-700 font-bold">
+                          CLEARCART
                       </Button>
                       </div>
               </div>

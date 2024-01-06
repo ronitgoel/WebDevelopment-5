@@ -8,7 +8,8 @@ export async function POST(req)
         const user = await User.findOne({email: email}).select("_id");
         console.log("User: ", user);
         return NextResponse.json({user});
-    } catch (error) {
+    }
+    catch (error) {
         console.log(error);
     }
 }

@@ -1,18 +1,12 @@
 'use client'
 import * as React from 'react'
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import Rating from '@mui/material/Rating';
 import Link from 'next/link';
 import { styled } from '@mui/material/styles';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import Image from 'next/image';
+import {Card, CardHeader, CardBody, CardFooter, Image, Button} from "@nextui-org/react";
 
 export default function Content({name, image, details, link, review, price}) {
     const StyledRating = styled(Rating)({
@@ -21,35 +15,41 @@ export default function Content({name, image, details, link, review, price}) {
         }
     });
     return (
-    <div>
-        <Card sx={{ maxWidth: 350 }} style={{margin:"2rem"}} className="bg-yellow-500 shadow-2xl shadow-indigo-500/50">
-            <CardHeader
-                className = "text-center text-white"
-                title = {name}
-            />
-            <div className="bg-white h-[350px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ...">
-                <Image priority={true} style={{height:'auto', width:'350px',margin:'auto', paddingTop:'5rem', paddingLeft:'1rem', paddingRight:'1rem'}} src={`/${image[0]}`} width={350} height={350} alt="Photo"></Image>
-            </div>
-            <CardContent>
-                <Typography className="text-center font-bold" variant="body2" color="text.secondary">
-                 {details}
-                </Typography>
-            </CardContent>
-            <StyledRating
-                className="flex justify-center"
-                name="customized-color"
-                defaultValue={review}
-                precision={0.5}
-                icon={<FavoriteIcon fontSize="inherit" />}
-                emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
-                readOnly
-            />
-            <CardActions className="flex justify-center">
-                <Button className = "bg-pink-500 mr-2"variant="contained" endIcon={<SendIcon />}>
-                    <Link href = {`./${link}`}>BUY NOW</Link>
-                </Button>
-                <p className="font-bold font-sans ...">₹{price}</p>
-            </CardActions>
+    <div className="p-4">
+        <Card isFooterBlurred className="bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 w-[350px] h-[550px] col-span-12 sm:col-span-5">
+            <CardHeader className="flex-col">
+                <p className="text-xl text-indigo-950 uppercase font-bold text-center underline">{name}</p>
+            </CardHeader>
+            <CardBody className="z-0 overflow-visible p-0 bg-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                <div className="m-auto">
+                <Image
+                    alt="Card example background"
+                    className="w-[350px] h-auto"
+                    src={`/${image[0]}`}
+                />
+                </div>
+            </CardBody>
+            <CardFooter className="flex flex-col z-1">
+                <div>
+                    <StyledRating
+                    name="customized-color"
+                    defaultValue={review}
+                    precision={0.5}
+                    icon={<FavoriteIcon fontSize="inherit" />}
+                    emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+                    readOnly
+                    />
+                </div>
+                <div>
+                    <p className="text-black text-md">{details}</p>
+                </div>
+                <div className="flex justify-between">
+                    <p className="text-black text-xl font-bold mr-12">₹{price}</p>
+                    <Button as={Link} href = {`./${link}`} endContent={<SendIcon/>} className="text-lg" color="primary" radius="full" size="sm">
+                        BUY NOW
+                    </Button>
+                </div>
+            </CardFooter>
         </Card>
     </div>
   )

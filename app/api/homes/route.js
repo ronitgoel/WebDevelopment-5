@@ -1,7 +1,7 @@
+import {NextResponse} from "next/server";
 import mongoose from "mongoose";
 import conn from '@/libs/mongo1';
-import {NextResponse} from "next/server";
-import { Int32, ObjectId } from "mongodb";
+import { ObjectId } from "mongodb";
 
 export async function GET()
 {

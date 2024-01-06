@@ -2,12 +2,13 @@
 import * as React from 'react'
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import Image from 'next/image';
-import { Button } from '@mui/material';
+import { Button } from '@nextui-org/react';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { useContext } from 'react';
 import { CartContext } from '@/components/Cart';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Link from 'next/link';
 
 export default function Page() {
     const {Cart, addprod, removeprod, decprod} = useContext(CartContext);
@@ -51,7 +52,7 @@ export default function Page() {
                     <div className="text-3xl text-center sm:text-left font-bold text-red-500" style={{marginTop:"1rem", padding:'0.2rem'}}>
                       {obj.name}
                     </div>
-                    <div className="text-3xl text-center sm:text-left font-bold text-red-500" style={{padding:'0.2rem'}}>
+                    <div className="text-xl sm:text-3xl text-center sm:text-left font-bold text-red-500" style={{padding:'0.2rem'}}>
                       {obj.details}
                     </div>
                     <div className="text-xl text-center sm:text-left font-bold text-red-500" style={{padding:'0.2rem'}}>
@@ -62,12 +63,13 @@ export default function Page() {
                     </div>
                     <div className="text-2xl sm:text-3xl text-center sm:text-left font-bold text-red-500" style={{marginTop:"2rem", padding:'0.2rem'}}>
                       Quantity = {obj.Qty}
-                      <Button onClick={() => {add(obj, obj.color, obj.size);}} className="text-yellow-500 bg-blue-950 hover:bg-pink-700" style={{marginLeft:'1rem'}}><AddIcon /></Button>
-                      <Button onClick={() => {remove(obj, obj.color, obj.size);}}className="text-yellow-500 bg-blue-950 hover:bg-pink-700" style={{marginLeft:'1rem'}}><RemoveIcon /></Button>
+                      <Button onClick={() => {add(obj, obj.color, obj.size);}} className="text-yellow-500 bg-danger-600" style={{marginLeft:'1rem'}}><AddIcon /></Button>
+                      <Button onClick={() => {remove(obj, obj.color, obj.size);}}className="text-yellow-500 bg-danger-600" style={{marginLeft:'1rem'}}><RemoveIcon /></Button>
                     </div>
-                    <div className="text-3xl text-center sm:text-left font-bold" style={{marginBottom:'0.5rem', padding:'0.2rem'}}>
-                      <Button href = {`./${obj.link}`} className="text-yellow-500 bg-blue-950 hover:bg-pink-700">See Your Product</Button>
-                      <Button onClick={() => {del(obj);}} className="text-black"><DeleteIcon fontSize="large"></DeleteIcon></Button>
+                    <br></br>
+                    <div className="flex flex-row text-center font-bold justify-between md:justify-start" style={{marginBottom:'0.5rem', padding:'0.2rem'}}>
+                      <Button as={Link} href = {`./${obj.link}`} className="text-yellow-500 bg-primary-400 font-bold text-lg">See Your Product</Button>
+                      <Button endContent={<DeleteIcon/>} onClick={() => {del(obj);}} className="text-yellow-500 bg-primary-400 font-bold text-lg ml-1">DELETE</Button>
                     </div>
                   </div>
               </div>

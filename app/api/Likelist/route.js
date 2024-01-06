@@ -7,7 +7,8 @@ export async function POST(req)
         const {email, mycart} = await req.json();
         const user = await User.findOneAndUpdate({email: email}, {yourlikelist: mycart}, {new: true});
         return NextResponse.json({user});
-    } catch (error) {
+    }
+    catch (error) {
         console.log(error);
     }
 }

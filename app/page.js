@@ -1,194 +1,186 @@
 'use client'
-import * as React from 'react';
-import { useEffect, useContext } from 'react';
 import './globals.css'
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { Navigation, Autoplay} from 'swiper/modules';
 import 'swiper/css/navigation';
+import * as React from 'react';
+import { useContext } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Autoplay} from 'swiper/modules';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import KitchenIcon from '@mui/icons-material/Kitchen';
 import MedicationIcon from '@mui/icons-material/Medication';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import Card from '@mui/material/Card';
+import {Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Button, DropdownMenu, DropdownTrigger, Dropdown, DropdownItem, Avatar} from "@nextui-org/react";
 import Image from 'next/image';
 import Link from 'next/link';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button'
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import List from '@mui/material/List';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Drawer from '@mui/material/Drawer';
-import Box from '@mui/material/Box';
-import EditLocationAltIcon from '@mui/icons-material/EditLocationAlt';
 import { CartContext } from '@/components/Cart';
 import { signOut, useSession } from 'next-auth/react';
-import FormatAlignJustifyIcon from '@mui/icons-material/FormatAlignJustify';
 
-const options = [
+const menuItems = [
   <div key = {1}>
-    <Link href="/main/Clothing" className = "justify-center flex w-[300px] md:w-[400px] text-red-900 text-[20px] bg-yellow-400 hover:bg-yellow-500 font-bold">Clothing</Link>
-    <Link href="/main/FootWear" className = "justify-center flex w-[300px] md:w-[400px] text-red-900 text-[20px] bg-yellow-400 hover:bg-yellow-500 font-bold">FootWear</Link>
-    <Link href="/main/ElectronicDevices" className = "justify-center flex w-[300px] md:w-[400px] text-red-900 text-[20px] bg-yellow-400 hover:bg-yellow-500 font-bold">Electronic Devices</Link>
-    <Link href="/main/SmartPhones" className = "justify-center flex w-[300px] md:w-[400px] text-red-900 text-[20px] bg-yellow-400 hover:bg-yellow-500 font-bold">SmartPhones</Link>
-    <Link href="/main/Accessories" className = "justify-center flex w-[300px] md:w-[400px] text-red-900 text-[20px] bg-yellow-400 hover:bg-yellow-500 font-bold">Accessories</Link>
-    <Link href="/main/HomeDecor" className = "justify-center flex w-[300px] md:w-[400px] text-red-900 text-[20px] bg-yellow-400 hover:bg-yellow-500 font-bold">HomeDecor</Link>
-    <Link href="/main/Travel" className = "justify-center flex w-[300px] md:w-[400px] text-red-900 text-[20px] bg-yellow-400 hover:bg-yellow-500 font-bold">Travel</Link>
-    <Link href="/main/KitchenItems" className = "justify-center flex w-[300px] md:w-[400px] text-red-900 text-[20px] bg-yellow-400 hover:bg-yellow-500 font-bold">KitchenItems</Link>
-    <Link href="/main/Softwares" className = "justify-center flex w-[300px] md:w-[400px] text-red-900 text-[20px] bg-yellow-400 hover:bg-yellow-500 font-bold">Softwares</Link>
-    <Link href="/main/Watches" className = "justify-center flex w-[300px] md:w-[400px] text-red-900 text-[20px] bg-yellow-400 hover:bg-yellow-500 font-bold">Watches</Link>
-    <Link href="/main/Medicare" className = "justify-center flex w-[300px] md:w-[400px] text-red-900 text-[20px] bg-yellow-400 hover:bg-yellow-500 font-bold">Medicare</Link>
-    <Link href="/main/Babycare" className = "justify-center flex w-[300px] md:w-[400px] text-red-900 text-[20px] bg-yellow-400 hover:bg-yellow-500 font-bold">Babycare</Link>
-    <Link href="/main/AutomotiveEssentials" className = "justify-center flex w-[300px] md:w-[400px] text-red-900 text-[20px] bg-yellow-400 hover:bg-yellow-500 font-bold">Automotive Essentials</Link>
+    <Link href="/main/Clothing" className = "justify-center flex text-white text-[16px] bg-warning-400 hover:bg-indigo-950 font-bold pb-2 pt-2">Clothing</Link>
+    <Link href="/main/FootWear" className = "justify-center flex text-white text-[16px] bg-warning-400 hover:bg-indigo-950 font-bold pb-2 pt-2">FootWear</Link>
+    <Link href="/main/ElectronicDevices" className = "justify-center flex text-white text-[16px] bg-warning-400 hover:bg-indigo-950 font-bold pb-2 pt-2">Electronic Devices</Link>
+    <Link href="/main/SmartPhones" className = "justify-center flex text-white text-[16px] bg-warning-400 hover:bg-indigo-950 font-bold pb-2 pt-2">SmartPhones</Link>
+    <Link href="/main/Accessories" className = "justify-center flex text-white text-[16px] bg-warning-400 hover:bg-indigo-950 font-bold pb-2 pt-2">Accessories</Link>
+    <Link href="/main/HomeDecor" className = "justify-center flex text-white text-[16px] bg-warning-400 hover:bg-indigo-950 font-bold pb-2 pt-2">HomeDecor</Link>
+    <Link href="/main/Travel" className = "justify-center flex text-white text-[16px] bg-warning-400 hover:bg-indigo-950 font-bold pb-2 pt-2">Travel</Link>
+    <Link href="/main/KitchenItems" className = "justify-center flex text-white text-[16px] bg-warning-400 hover:bg-indigo-950 font-bold pb-2 pt-2">KitchenItems</Link>
+    <Link href="/main/Softwares" className = "justify-center flex text-white text-[16px] bg-warning-400 hover:bg-indigo-950 font-bold pb-2 pt-2">Softwares</Link>
+    <Link href="/main/Watches" className = "justify-center flex text-white text-[16px] bg-warning-400 hover:bg-indigo-950 font-bold pb-2 pt-2">Watches</Link>
+    <Link href="/main/Medicare" className = "justify-center flex text-white text-[16px] bg-warning-400 hover:bg-indigo-950 font-bold pb-2 pt-2">Medicare</Link>
+    <Link href="/main/Babycare" className = "justify-center flex text-white text-[16px] bg-warning-400 hover:bg-indigo-950 font-bold pb-2 pt-2">Babycare</Link>
+    <Link href="/main/AutomotiveEssentials" className = "justify-center flex text-white text-[16px] bg-warning-400 hover:bg-indigo-950 font-bold pb-2 pt-2">Automotive Essentials</Link>
+  </div>
+];
+const list = [
+  <div key = {1}>
+    <Link href="/main/Settings/YourAccount" className = "justify-center flex text-white text-[16px] bg-warning-400 hover:bg-indigo-950 font-bold pb-2 pt-2">Your Account</Link>
+    <Link href="/main/Settings/PersonalDetails" className = "justify-center flex text-white text-[16px] bg-warning-400 hover:bg-indigo-950 font-bold pb-2 pt-2">Personal Details</Link>
+    <Link href="/main/Settings/YourOrders" className = "justify-center flex text-white text-[16px] bg-warning-400 hover:bg-indigo-950 font-bold pb-2 pt-2">Your Orders</Link>
+    <Link href="/main/Settings/DeliveredOrders" className = "justify-center flex text-white text-[16px] bg-warning-400 hover:bg-indigo-950 font-bold pb-2 pt-2">Delivered Orders</Link>
+    <Link href="/main/Settings/OrdersRejected" className = "justify-center flex text-white text-[16px] bg-warning-400 hover:bg-indigo-950 font-bold pb-2 pt-2">Orders Rejected</Link>
+    <Link href="/main/Settings/YourWishlist" className = "justify-center flex text-white text-[16px] bg-warning-400 hover:bg-indigo-950 font-bold pb-2 pt-2">Wishlist</Link>
+    <Link href="/main/Settings/LikedProducts" className = "justify-center flex text-white text-[16px] bg-warning-400 hover:bg-indigo-950 font-bold pb-2 pt-2">Liked Products</Link>
   </div>
 ];
 
-let nav1 = "Enter Your Details";
-let nav2 = "Sir/Mam";
-const ITEM_HEIGHT = 48;
+let nav1 = "";
+let nav2 = "Sign Up";
 export default function Home() {
+  const {Cart} = useContext(CartContext);
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const {data : session} = useSession();
   if (session)
   {
     nav1 = session.user.name;
     nav2 = "Sign Out";
   }
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const {Cart} = useContext(CartContext);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-  const [state, setState] = React.useState({
-    right : false,
-  });
-
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
-    }
-
-    setState({ ...state, [anchor]: open });
-  };
-  const list = (anchor) => (
-    <Box
-      style={{color: 'black'}}
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
-      alt=""
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      <List>
-        {['YourAccount', 'YourOrders', 'PersonalDetails','DeliveredOrders','OrdersRejected','YourWishlist','LikedProducts'].map((text, index) => (
-          <ListItem className="bg-blue-950" key={text} disablePadding>
-            <Link className="hover:bg-red-500 rounded-xl" style={{color: 'yellow', margin:'auto'}} href={`/main/Settings/${text}`}>
-              <ListItemButton>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </Link>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
   return (
      <div>
-        <div className="nav flex flex-col justify-between xl:flex-row">
-          <div className="flex flex-col justify-center md:flex-row">
-            <div className="nav pr-2 pt-1.5 flex flex-row justify-center">
-              <Link className = "pl-2 text-2xl font-black text-orange-400 hover:text-amber-400 w-52 mt-4 sm:text-3xl" href="/">DEVCART</Link>
-              <Link className="text-white pt-3 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." href="/Signup">
-                <div className="flex gap-3 text-center" style={{width:'240px', fontSize:'20px'}}>
-                  <EditLocationAltIcon style={{fontSize:'50px'}}></EditLocationAltIcon>
-                  Hello,
-                  {nav1}
-                  <Image src={session?.user?.image || "/Profile.png"} alt="profile photo" style={{height:'40px', width:'auto'}} width={40} height={40} className="rounded-full"></Image>
-                </div>
-              </Link>
-            </div>
-            <div className="justify-center flex mt-5 ml-4 mb-1.5 text-center">
-              <Button variant="outlined" size="medium"
-                  className = "w-[300px] md:w-[400px]"
-                  aria-label="more"
-                  id="long-button"
-                  aria-controls={open ? 'long-menu' : undefined}
-                  aria-expanded={open ? 'true' : undefined}
-                  aria-haspopup="true"
-                  onClick={handleClick}>
-                  Select Your Category
-              </Button>
-              <Menu
-                  
-                  MenuListProps={{
-                    'aria-labelledby': 'long-button',
-                  }}
-                  anchorEl={anchorEl}
-                  open={open}
-                  onClose={handleClose}
-                  className="w-[300px] md:w-[400px]"
-                  PaperProps={{
-                    style: {
-                      maxHeight: ITEM_HEIGHT * 4.5
-                    },
-                  }}
-                >
-                  {options.map((option) => (
-                    <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
-                      {option}
-                    </MenuItem>
-                  ))}
-              </Menu>
-            </div>
-          </div>
-          <div className="flex flex-row justify-center">
-            <div style={{color:'aquamarine'}} className = "w-30 text-xl inline text-center mt-6 mr-8 animate-bounce md:w-80 md:mr-16">
-              Welcome To Your Own Shopping Centre
-            </div>
-            <div className=" bg-pink-500 hover:bg-pink-600 rounded-full px-6 py-0 mt-3 mb-1 ml-2 inline md:ml-8">
-                <Link style={{color: 'white', fontSize:'1rem' }} href="/main/Cart">
-                  <ShoppingCartOutlinedIcon className="inline-block" style={{ color: 'white', fontSize:'4rem' }}></ShoppingCartOutlinedIcon>
-                  Cart ({Cart.length})
-                </Link>
-            </div>
-            <div>
-              {['right'].map((anchor) => (
-                <React.Fragment key={anchor}>
-                  <FormatAlignJustifyIcon onClick={toggleDrawer(anchor, true)} style={{color:'white', fontSize:'4rem', marginTop:'16px'}} ></FormatAlignJustifyIcon>
-                  <Drawer
-                    anchor={anchor}
-                    open={state[anchor]}
-                    onClose={toggleDrawer(anchor, false)}
+        <Navbar
+          className="dark bg-warning-400 backdrop-sepia-0 backdrop-blur-sm bg-opacity-50"
+          isBordered='true'
+          isMenuOpen={isMenuOpen}
+          onMenuOpenChange={setIsMenuOpen}
+        >
+          <NavbarContent className="sm:hidden" justify="start">
+            <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
+          </NavbarContent>
+
+          <NavbarContent className="sm:hidden" justify="center">
+            <NavbarBrand>
+              <Button as={Link} href="/" color="danger" variant="solid" size="md" radius="md" className="font-bold text-white text-lg">DEVCART</Button>
+            </NavbarBrand>
+          </NavbarContent>
+
+          <NavbarContent className="hidden sm:flex gap-4">
+            <NavbarBrand>
+            <Button as={Link} href="/" color="danger" variant="solid" size="lg" radius="md" className="font-bold text-white text-lg">DEVCART</Button>
+            </NavbarBrand>
+          </NavbarContent>
+
+          <NavbarContent className="hidden sm:flex gap-4" justify="center">
+            <Dropdown>
+              <NavbarItem>
+                <DropdownTrigger>
+                  <Button
+                    disableRipple
+                    className="md:w-[300px] lg:w-[400px] p-0 bg-indigo-950 md:text-lg lg:text-2xl font-bold text-yellow-500"
+                    radius="md"
+                    variant="solid"
+                    size="lg"
+                    color="danger"
                   >
-                    <div className = "login">
-                      <Button onClick={() => signOut()}><Link href = "/SignIn" className = "login2 hover:bg-yellow-300 font-bold rounded-lg">{nav2}</Link></Button>
-                    </div>
-                    {list(anchor)}
-                    <div className="bg-yellow-600 text-center text-2xl py-2 border-red-600 border-t-8 font-bold">
-                      Welcome OnBoard
-                    </div>
-                    <div className="bg-yellow-600 text-center text-2xl py-2">
-                      Top Quality Products
-                    </div>
-                    <div className="bg-yellow-600 text-center text-2xl py-2">
-                      <div className = "hover:animate-spin w-2" style={{margin:'auto'}}>@</div>
-                    </div>
-                    <div className="bg-yellow-600 text-center text-2xl py-2 hover:underline">
-                      Reasonable Rates
-                    </div>
-                  </Drawer>
-                </React.Fragment>
-              ))}
-            </div>
-          </div>
-        </div>
+                    Select Your Category
+                  </Button>
+                </DropdownTrigger>
+              </NavbarItem>
+              <DropdownMenu
+                aria-label="Categories"
+                className="w-[340px]"
+                itemClasses={{
+                  base: "gap-4",
+                }}
+              >
+                {menuItems.map((item, index) => (
+                  <DropdownItem key={`${item}-${index}`}>
+                      {item}
+                  </DropdownItem>
+                ))}
+              </DropdownMenu>
+            </Dropdown>
+          </NavbarContent>
+
+          <NavbarContent justify="end">
+            <NavbarItem className="hidden sm:flex">
+            <Button as={Link} href="/main/Cart" color="danger" variant="solid" size="md" radius="md" className="font-bold text-white text-lg">
+                <ShoppingCartOutlinedIcon className="inline-block"></ShoppingCartOutlinedIcon>
+                Cart ({Cart.length})
+            </Button>
+            </NavbarItem>
+            <NavbarItem>
+              {
+                !session && 
+                (
+                <Button as={Link} href="/Signup" color="danger" variant="solid" size="md" radius="md" className="font-bold text-white text-lg">
+                  {nav2}
+                 </Button>
+                )
+              }
+              {
+                session &&
+                (
+                 <Button as={Link} onClick={() => signOut()} href="/Signup" color="danger" variant="solid" size="md" radius="md" className="font-bold text-white text-lg">
+                  {nav2}
+                 </Button>
+                )
+              }
+            </NavbarItem>
+            <Dropdown placement="bottom-end">
+              <DropdownTrigger>
+                <Avatar
+                  isBordered
+                  as="button"
+                  color="danger"
+                  size="md"
+                  src={session?.user?.image}
+                  showFallback
+                  fallback={<Avatar src='/Profile.png' alt='profile'></Avatar>}
+                />
+              </DropdownTrigger>
+              <DropdownMenu aria-label="Profile Actions" variant="flat">
+                <DropdownItem key="profile" className="h-14 gap-2 text-center text-indigo-950 font-bold bg-warning-400">
+                  <p className="font-semibold">Welcome Back</p>
+                  <p className="font-semibold">{nav1}</p>
+                </DropdownItem>
+                  {list.map((item, index) => (
+                    <DropdownItem key={`${item}-${index}`}>
+                        {item}
+                    </DropdownItem>
+                  ))}
+              </DropdownMenu>
+            </Dropdown>
+          </NavbarContent>
+
+          <NavbarMenu>
+            <NavbarItem className="flex sm:hidden justify-center">
+            <Button as={Link} href="/main/Cart" color="danger" variant="solid" size="md" radius="md" className="font-bold text-white text-lg">
+                <ShoppingCartOutlinedIcon className="inline-block"></ShoppingCartOutlinedIcon>
+                Cart ({Cart.length})
+            </Button>
+            </NavbarItem>
+            {menuItems.map((item, index) => (
+              <NavbarMenuItem key={`${item}-${index}`}>
+                  {item}
+              </NavbarMenuItem>
+            ))}
+          </NavbarMenu>
+        </Navbar>
         <Swiper
           rewind={true}
           direction={'horizontal'}
@@ -201,238 +193,209 @@ export default function Home() {
             disableOnInteraction: true,
           }}
           modules={[Navigation, Autoplay]}
-          className="mySwiper h-[800px] md:h-[400px]"
+          className="mySwiper h-[620px] md:h-[400px]"
         >
           <SwiperSlide className = "bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ...">
-            <div className="flex flex-col md:flex-row">
-              <div className="flex-row basis-1/5 "></div>
-              <div className="flex-row basis-1/5">
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <div className = "text-3xl text-center font-bold text-yellow-400">Starting At Just ₹199</div>
-                <div className = "md:text-md lg:text-xl text-center font-bold">Deals On Top Brands</div>
-                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-400"><LocalShippingIcon></LocalShippingIcon>Free Delivery On First Order</div>
-                <br></br>
-                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-400"><TrendingUpIcon></TrendingUpIcon>Latest Trends</div>
-                <br></br>
-                <Link href="/main/Clothing"><div style={{margin:'auto', width:'9rem'}} className = "rounded-lg text-xl text-center font-bold text-yellow-400 hover:bg-purple-800">Buy Now</div></Link>
-              </div>
-              <div className = "flex-row basis-1/5"></div>
-              <div className="flex flex-row basis-1/5 justify-center pt-4">
-                <Image priority={true} src="/Image1.jpg" width={500} height={100} alt="clothes"></Image>
+            <div className="items-center flex flex-col md:flex-row">
+              <div className="flex flex-row basis-2/5 justify-center mt-8">
+                <Image className="rounded-lg w-auto h-[350px]" priority={true} src="/Image1.jpg" width={500} height={100} alt="clothes"></Image>
               </div>
               <div className="flex-row basis-1/5"></div>
+              <div className="w-[350px] h-auto md:w-auto md:h-[350px] text-center flex-row basis-1/5 bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 rounded-lg mt-4 mr-2 ml-2 sm:ml-0 sm:mr-0">
+                <div className = "md:mt-16 lg:mt-18 text-3xl text-center font-bold text-yellow-400 underline">Starting At Just ₹199</div>
+                <div className = "md:text-md lg:text-xl text-center font-bold">Deals On Top Brands</div>
+                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-300"><LocalShippingIcon></LocalShippingIcon>Free Delivery On First Order</div>
+                <br></br>
+                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-300"><TrendingUpIcon></TrendingUpIcon>Latest Trends</div>
+                <br></br>
+                <Button as={Link} href="/main/Clothing" color="success" className = "text-xl text-center font-bold text-white">Buy Now</Button>
+              </div>
+              <div className = "flex-row basis-1/5"></div>
+
             </div>
           </SwiperSlide>
           <SwiperSlide className = "bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% ...">
-          <div className="flex flex-col md:flex-row">
+          <div className="items-center flex flex-col md:flex-row">
+              <div className="flex flex-row basis-2/5 justify-center mt-12">
+                <Image className="rounded-lg w-auto h-[250px] md:h-[320px]" src="/Image2.jpg" width={100} height={100} alt="shoes"></Image>
+              </div>
               <div className="basis-1/5 "></div>
-              <div className="basis-1/5">
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <div className = "text-3xl text-center font-bold text-yellow-400">Under ₹499</div>
+              <div className="w-[350px] h-auto md:w-auto md:h-[350px] text-center flex-row basis-1/5 bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 rounded-lg mt-4 mr-2 ml-2 sm:ml-0 sm:mr-0">
+                <div className = "md:mt-16 lg:mt-18 text-3xl text-center font-bold text-yellow-400 underline">Under ₹499</div>
                 <div className = "md:text-md lg:text-xl text-center font-bold">Super Saver Weekend</div>
-                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-400"><LocalShippingIcon></LocalShippingIcon>Free Delivery On First Order</div>
+                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-300"><LocalShippingIcon></LocalShippingIcon>Free Delivery On First Order</div>
                 <br></br>
-                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-400"><TrendingUpIcon></TrendingUpIcon>Latest Trends</div>
+                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-300"><TrendingUpIcon></TrendingUpIcon>Latest Trends</div>
                 <br></br>
-                <Link href="/main/FootWear"><div style={{margin:'auto', width:'10rem'}} className = "rounded-lg text-xl text-center font-bold text-yellow-400 hover:bg-purple-800">Buy Now</div></Link>
+                <Button as={Link} href="/main/FootWear" color="success" className = "text-xl text-center font-bold text-white">Buy Now</Button>
               </div>
               <div className = "basis-1/5"></div>
-              <div className="flex flex-row basis-1/5 justify-center pt-4">
-                <Image className="h-[358px] w-[500px]" src="/Image2.jpg" width={100} height={100} alt="shoes"></Image>
-              </div>
-              <div className="basis-1/5"></div>
             </div>
           </SwiperSlide>
           <SwiperSlide className = "bg-gradient-to-r from-pink-500 to-yellow-500 ...">
-          <div className="flex flex-col md:flex-row">
+          <div className="items-center flex flex-col md:flex-row">
+              <div className="flex flex-row basis-2/5 justify-center mt-12">
+                <Image className="rounded-lg w-auto h-[220px] md:h-[320px]" src="/Image3.jpg" width={500} height={400} alt="clothes"></Image>
+              </div>
               <div className="basis-1/5 "></div>
-              <div className="basis-1/5">
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <div className = "text-3xl text-center font-bold text-yellow-400">Under ₹499</div>
+              <div className="w-[350px] h-auto md:w-auto md:h-[350px] text-center flex-row basis-1/5 bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 rounded-lg mt-4 mr-2 ml-2 sm:ml-0 sm:mr-0">
+                <div className = "md:mt-16 lg:mt-18 text-3xl text-center font-bold text-indigo-950 underline">Under ₹499</div>
                 <div className = "text-xl text-center font-bold">Water Bottles And Lunch Boxes<KitchenIcon></KitchenIcon></div>
-                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-400"><LocalShippingIcon></LocalShippingIcon>Free Delivery On First Order</div>
+                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-300"><LocalShippingIcon></LocalShippingIcon>Free Delivery On First Order</div>
                 <br></br>
-                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-400"><TrendingUpIcon></TrendingUpIcon>Latest Trends</div>
+                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-300"><TrendingUpIcon></TrendingUpIcon>Latest Trends</div>
                 <br></br>
-                <Link href="/main/KitchenItems"><div style={{margin:'auto', width:'10rem'}} className = "rounded-lg  text-xl text-center font-bold text-yellow-400 hover:bg-purple-800">Buy Now</div></Link>
+                <Button as={Link} href="/main/KitchenItems" color="success" className = "text-xl text-center font-bold text-white">Buy Now</Button>
               </div>
               <div className = "basis-1/5"></div>
-              <div className="flex flex-row basis-1/5 justify-center pt-4">
-                <Image className="h-[358px] w-[600px]" src="/Image3.jpg" width={500} height={400} alt="clothes"></Image>
-              </div>
-              <div className="basis-1/5"></div>
             </div>
           </SwiperSlide>
           <SwiperSlide className = "bg-gradient-to-r from-green-400 to-blue-500 ...">
-          <div className="flex flex-col md:flex-row">
+          <div className="items-center flex flex-col md:flex-row">
+              <div className="flex flex-row basis-2/5 justify-center mt-12">
+                <Image className="rounded-lg w-auto h-[240px] md:h-[320px]" src="/Image4.jpg" width={500} height={400} alt="clothes"></Image>
+              </div>
               <div className="basis-1/5 "></div>
-              <div className="basis-1/5">
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <div className = "text-3xl text-center font-bold text-yellow-400">Under ₹99</div>
+              <div className="w-[350px] h-auto md:w-auto md:h-[350px] text-center flex-row basis-1/5 bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 rounded-lg mt-4 mr-2 ml-2 sm:ml-0 sm:mr-0">
+                <div className = "md:mt-16 lg:mt-18 text-3xl text-center font-bold text-indigo-950 underline">Under ₹99</div>
                 <div className = "text-xl text-center font-bold">BestSellers In Medicare<MedicationIcon></MedicationIcon></div>
-                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-400"><LocalShippingIcon></LocalShippingIcon>Free Delivery On First Order</div>
+                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-300"><LocalShippingIcon></LocalShippingIcon>Free Delivery On First Order</div>
                 <br></br>
-                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-400"><TrendingUpIcon></TrendingUpIcon>Latest Trends</div>
+                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-300"><TrendingUpIcon></TrendingUpIcon>Latest Trends</div>
                 <br></br>
-                <Link href="/main/Medicare"><div style={{margin:'auto', width:'10rem'}} className = "rounded-lg text-xl text-center font-bold text-yellow-400 hover:bg-purple-800">Buy Now</div></Link>
+                <Button as={Link} href="/main/Medicare" color="success" className = "text-xl text-center font-bold text-white">Buy Now</Button>
               </div>
               <div className = "basis-1/5"></div>
-              <div className="flex flex-row basis-1/5 justify-center pt-4">
-                <Image className="h-[358px] w-[500px]" src="/Image4.jpg" width={500} height={400} alt="clothes"></Image>
-              </div>
-              <div className="basis-1/5"></div>
             </div>
           </SwiperSlide>
           <SwiperSlide className = "bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ...">
-          <div className="flex flex-col md:flex-row">
+          <div className="items-center flex flex-col md:flex-row">
+              <div className="flex flex-row basis-2/5 justify-center mt-8">
+                <Image className="rounded-lg w-auto h-[330px] md:h-[350px]" src="/Image5.jpg" width={500} height={400} alt="clothes"></Image>
+              </div>
               <div className="basis-1/5 "></div>
-              <div className="basis-1/5">
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <div className = "text-3xl text-center font-bold text-yellow-400">Smartphones</div>
+              <div className="w-[350px] h-auto md:w-auto md:h-[350px] text-center flex-row basis-1/5 bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 rounded-lg mt-4 mr-2 ml-2 sm:ml-0 sm:mr-0">
+                <div className = "md:mt-16 lg:mt-18 text-3xl text-center font-bold text-yellow-400 underline">Smartphones</div>
                 <div className = "text-xl text-center font-bold">Starting At ₹6,299</div>
-                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-400"><LocalShippingIcon></LocalShippingIcon>Free Delivery On First Order</div>
+                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-300"><LocalShippingIcon></LocalShippingIcon>Free Delivery On First Order</div>
                 <br></br>
-                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-400"><TrendingUpIcon></TrendingUpIcon>Latest Trends</div>
+                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-300"><TrendingUpIcon></TrendingUpIcon>Latest Trends</div>
                 <br></br>
-                <Link href="/main/SmartPhones"><div style={{margin:'auto', width:'10rem'}} className = "rounded-lg text-xl text-center font-bold text-yellow-400 hover:bg-purple-800">Buy Now</div></Link>
+                <Button as={Link} href="/main/SmartPhones" color="success" className = "text-xl text-center font-bold text-white">Buy Now</Button>
               </div>
               <div className = "basis-1/5"></div>
-              <div className="flex flex-row basis-1/5 justify-center pt-4">
-                <Image className="h-[358px] w-[500px]" src="/Image5.jpg" width={500} height={400} alt="clothes"></Image>
-              </div>
-              <div className="basis-1/5"></div>
             </div>
           </SwiperSlide>
         </Swiper>
-        <div className="bg-slate-400">
+        <div className="bg-slate-300">
         <br></br>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center gap-1">
-              <Card className = "transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
+              <Card className = "bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
                 <CardHeader
                   title="Upto 40% Off | Baby Care And Expecting Mothers"
                 />
                 <Image className="h-[358px] w-[500px]" src="/Card1.png" width={500} height={400} alt="Baby Care"></Image>
                 <CardContent>
-                  <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/Babycare">Visit The Store</Link></Button></div>
+                  <div className = "text-center"><Button as={Link} href = "/main/Babycare" color="primary" variant="solid" size="md" radius="md" className="font-bold text-white text-lg">Vist The Store</Button></div>
                 </CardContent>
               </Card>
-              <Card className = "transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
+              <Card className = "bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
                 <CardHeader
                   title="Combo Packs Of Shirts| Under ₹599"
                 />
                 <Image className="h-[358px] w-[500px]" src="/Card2.png" width={500} height={400} alt="Shirts"></Image>
                 <CardContent>
-                <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/Clothing">Visit The Store</Link></Button></div>
+                <div className = "text-center"><Button as={Link} href = "/main/Clothing" color="primary" variant="solid" size="md" radius="md" className="font-bold text-white text-lg">Vist The Store</Button></div>
                 </CardContent>
               </Card>
-              <Card className = "transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
+              <Card className = "bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
                 <CardHeader
                   title="Automotive Essentials | Upto 60% off"
                 />
                 <Image className="h-[358px] w-[500px]" src="/Card3.png" width={500} height={400} alt="Automotive Essesntials"></Image>
                 <CardContent>
-                <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/AutomotiveEssentials">Visit The Store</Link></Button></div>
+                <div className = "text-center"><Button as={Link}  href = "/main/AutomotiveEssentials" color="primary" variant="solid" size="md" radius="md" className="font-bold text-white text-lg">Vist The Store</Button></div>
                 </CardContent>
               </Card>
-              <Card className = "transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
+              <Card className = "bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
                 <CardHeader
                   title="Under ₹499 | Pocket Friendly Fashion"
                 />
                 <Image className="h-[358px] w-[500px]" src="/Card4.png" width={500} height={400} alt="Fashion"></Image>
                 <CardContent>
-                <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/Clothing">Visit The Store</Link></Button></div>
+                <div className = "text-center"><Button as={Link} href = "/main/Clothing" color="primary" variant="solid" size="md" radius="md" className="font-bold text-white text-lg">Vist The Store</Button></div>
                 </CardContent>
               </Card>
-              <Card className = "transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
+              <Card className = "bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
                 <CardHeader
                   title="Electronic Devices For Offices"
                 />
                 <Image className="h-[358px] w-[500px]" src="/Card5.png" width={500} height={400} alt="Electronic Items"></Image>
                 <CardContent>
-                <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/ElectronicDevices">Visit The Store</Link></Button></div>
+                <div className = "text-center"><Button as={Link} href = "/main/ElectronicDevices" color="primary" variant="solid" size="md" radius="md" className="font-bold text-white text-lg">Vist The Store</Button></div>
                 </CardContent>
               </Card>
-              <Card className = "transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
+              <Card className = "bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
                 <CardHeader
                   title="Starting ₹99 | Baby Essentials And Toys"
                 />
                 <Image className="h-[358px] w-[500px]" src="/Card6.png" width={500} height={400} alt="Baby Care"></Image>
                 <CardContent>
-                <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/Babycare">Visit The Store</Link></Button></div>
+                <div className = "text-center"><Button as={Link} href = "/main/Babycare" color="primary" variant="solid" size="md" radius="md" className="font-bold text-white text-lg">Vist The Store</Button></div>
                 </CardContent>
               </Card>
-              <Card className = "transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
+              <Card className = "bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
                 <CardHeader
                   title="Upto 60% Off | Styles For Women"
                 />
                 <Image className="h-[358px] w-[500px]" src="/Card7.png" width={500} height={400} alt="Women Style"></Image>
                 <CardContent>
-                <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/Clothing">Visit The Store</Link></Button></div>
+                <div className = "text-center"><Button as={Link} href = "/main/Clothing" color="primary" variant="solid" size="md" radius="md" className="font-bold text-white text-lg">Vist The Store</Button></div>
                 </CardContent>
               </Card>
-              <Card className = "transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
+              <Card className = "bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
                 <CardHeader
                   title="Appliances For Home | Upto 55% Off"
                 />
                 <Image className="h-[358px] w-[500px]" src="/Card8.png" width={500} height={400} alt="Appliances"></Image>
                 <CardContent>
-                <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/ElectronicDevices">Visit The Store</Link></Button></div>
+                <div className = "text-center"><Button as={Link} href = "/main/ElectronicDevices" color="primary" variant="solid" size="md" radius="md" className="font-bold text-white text-lg">Vist The Store</Button></div>
                 </CardContent>
               </Card>
-              <Card className = "transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
+              <Card className = "bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
                 <CardHeader
                   title="Revamp Your Home In Style In Budget Friendly Way"
                 />
                 <Image className="h-[358px] w-[500px]" src="/Card9.png" width={500} height={400} alt="Home Decor"></Image>
                 <CardContent>
-                <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/HomeDecor">Visit The Store</Link></Button></div>
+                <div className = "text-center"><Button as={Link} href = "/main/HomeDecor" color="primary" variant="solid" size="md" radius="md" className="font-bold text-white text-lg">Vist The Store</Button></div>
                 </CardContent>
               </Card>
-              <Card className = "transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
+              <Card className = "bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
                 <CardHeader
                   title="Upto 70% Off | Clearance Store"
                 />
                 <Image className="h-[358px] w-[500px]" src="/Card10.png" width={500} height={400} alt="Devices"></Image>
                 <CardContent>
-                <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/ElectronicDevices">Visit The Store</Link></Button></div>
+                <div className = "text-center"><Button as={Link} href = "/main/ElectronicDevices" color="primary" variant="solid" size="md" radius="md" className="font-bold text-white text-lg">Vist The Store</Button></div>
                 </CardContent>
               </Card>
-              <Card className = "transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
+              <Card className = "bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
                 <CardHeader
                   title="Upto 60% Off | Styles For Men"
                 />
                 <Image className="h-[358px] w-[500px]" src="/Card11.png" width={500} height={400} alt="Men Style"></Image>
                 <CardContent>
-                <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/Clothing">Visit The Store</Link></Button></div>
+                <div className = "text-center"><Button as={Link} href = "/main/Clothing" color="primary" variant="solid" size="md" radius="md" className="font-bold text-white text-lg">Vist The Store</Button></div>
                 </CardContent>
               </Card>
-              <Card className = "transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
+              <Card className = "bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
                 <CardHeader
                   title="Banarsi Sarees For Women | Upto 40% Off"
                 />
                 <Image className="h-[358px] w-[500px]" src="/Card12.png" width={500} height={400} alt="Women"></Image>
                 <CardContent>
-                <div className = "text-center"><Button className="bg-pink-600" variant="contained"><Link href = "/main/Clothing">Visit The Store</Link></Button></div>
+                <div className = "text-center"><Button as={Link} href = "/main/Clothing" color="primary" variant="solid" size="md" radius="md" className="font-bold text-white text-lg">Vist The Store</Button></div>
                 </CardContent>
               </Card>
           </div>

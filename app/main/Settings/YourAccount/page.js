@@ -27,30 +27,32 @@ export default function Page() {
         location = data.user.address;
       }
     });
-  }, []);
+  }, [session]);
   return (
-    <div className="bg-pink-500">
-        <br></br>
-        <div className="bg-blue-900 rounded-full flex flex-col justify-center" style={{margin:'auto'}}>
-            <br></br>
-            <br></br>
-            <div className = "flex flex-row text-center text-2xl bg-slate-400 rounded-lg font-bold" style={{margin:'auto'}}>Your Account Details</div>
-            <br></br>
-            <br></br>
-            <div className="transition ease-in-out delay-150 border-rose-900 border-4 rounded-lg bg-yellow-500 hover:bg-green-400 hover:-translate-y-1 hover:scale-110 duration-300 w-full md:w-[500px] lg:w-[1000px]" style={{margin:'auto'}}><p className = "text-center text-xl">Name: {name}</p></div>
-            <br></br>
-            <br></br>
-            <div className="transition ease-in-out delay-150 border-rose-900 border-4 rounded-lg bg-yellow-500 hover:bg-green-400 hover:-translate-y-1 hover:scale-110 duration-300 w-full md:w-[500px] lg:w-[1000px]" style={{margin:'auto'}}><p className = "text-center text-xl">EmailId: {email}</p></div>
-            <br></br>
-            <br></br>
-            <div className="transition ease-in-out delay-150 border-rose-900 border-4 rounded-lg bg-yellow-500 hover:bg-green-400 hover:-translate-y-1 hover:scale-110 duration-300 w-full md:w-[500px] lg:w-[1000px]" style={{margin:'auto'}}><p className = "text-center text-xl">MobileNumber: {mobile}</p></div>
-            <br></br>
-            <br></br>
-            <div className="transition ease-in-out delay-150 border-rose-900 border-4 rounded-lg bg-yellow-500 hover:bg-green-400 hover:-translate-y-1 hover:scale-110 duration-300 w-full md:w-[500px] lg:w-[1000px]" style={{margin:'auto'}}><p className = "text-center text-xl">Location: {location}</p></div>
-            <br></br>
-            <br></br>
-        </div>
-        <br></br>
+    <div>
+      <div className="px-4 sm:px-0">
+        <h3 className="text-3xl font-bold leading-7 text-gray-900 m-6 text-center md:text-left">Your Account</h3>
+      </div>
+      <div className="mt-6 border-gray-100 border-4">
+        <dl className="ml-4 divide-y divide-gray-100">
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-ld font-bold leading-6 text-gray-900">FULL NAME</dt>
+            <dd className="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{name}</dd>
+          </div>
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-ld font-bold leading-6 text-gray-900">EMAIL ADDRESS</dt>
+            <dd className="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{email}</dd>
+          </div>
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-ld font-bold leading-6 text-gray-900">LOCATION</dt>
+            <dd className="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{location}</dd>
+          </div>
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-ld font-bold leading-6 text-gray-900">MOBILE NUMBER</dt>
+            <dd className="mt-1 text-md leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{mobile}</dd>
+          </div>
+        </dl>
+      </div>
     </div>
   )
 }

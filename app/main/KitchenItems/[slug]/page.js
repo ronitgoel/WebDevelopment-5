@@ -1,47 +1,35 @@
 'use client'
 import * as React from 'react'
-import { useEffect } from 'react';
-import Image from 'next/image'
+import { useEffect, useContext } from 'react';
 import { styled } from '@mui/material/styles';
 import Rating from '@mui/material/Rating';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import { Button } from '@mui/material';
-import { useContext } from 'react';
+import SendIcon from '@mui/icons-material/Send';
 import { CartContext } from '@/components/Cart';
 import { WishContext } from '@/components/Wishlist';
 import { LikeContext } from '@/components/Likelist';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import { EffectCoverflow, Pagination, EffectCube, Navigation} from 'swiper/modules';
-import Link from 'next/link';
-import SendIcon from '@mui/icons-material/Send';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/effect-cube';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { EffectCoverflow, Pagination, EffectCube, Navigation} from 'swiper/modules';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
+import Link from 'next/link';
+import {CheckboxGroup, Checkbox, Card, CardHeader, CardBody, CardFooter, Image, Button} from "@nextui-org/react";
 
 
 export default function Page({params}) {
     const router = useRouter();
     const {data : session} = useSession();
   const [color, setcolor] = React.useState(' ');
-  const [size, setsize] = React.useState('Medium');
-  const handlesize = (event, newsize) => {
-    setsize(newsize)
-  };
+  const [size, setsize] = React.useState(['Medium']);
   const {addprod} = useContext(CartContext);
   const {addwish} = useContext(WishContext);
   const {addLike} = useContext(LikeContext);
@@ -79,7 +67,12 @@ export default function Page({params}) {
   {
     if (session)
     {
-        addprod(ele, color, size);
+        if(size.length > 1)
+        {
+            alert('Please Select Only One Option In Size');
+            return;
+        }
+        addprod(ele, color, size[0]);
         toast.success('🦄 Item Added To Cart!!', {
             position: "bottom-left",
             autoClose: 3000,
@@ -191,13 +184,16 @@ export default function Page({params}) {
             <div className="flex mt-6 items-center pb-4 border-b-2 border-red-800 mb-5">
                 <div className="flex">
                     <span className="mr-3 font-bold text-lg">Size:</span>
-                    <div className="bg-orange-200">
-                        <ToggleButtonGroup value={size} exclusive onChange={handlesize} color="warning" size="medium">    
-                            <ToggleButton value="Small" variant="contained" className="border-2 border-red-800 font-bold bg-purple-500 hover:bg-purple-700">Small</ToggleButton>
-                            <ToggleButton value="Medium" variant="contained" className="border-2 border-red-800 font-bold bg-purple-500 hover:bg-purple-700">Medium</ToggleButton>
-                            <ToggleButton value="Large" variant="contained" className="border-2 border-red-800 font-bold bg-purple-500 hover:bg-purple-700">Large</ToggleButton>
-                        </ToggleButtonGroup>
-                    </div>
+                    <CheckboxGroup
+                        orientation="horizontal"
+                        color="danger"
+                        value={size}
+                        onValueChange={setsize}
+                    >
+                        <Checkbox value="Small">Small</Checkbox>
+                        <Checkbox value="Medium">Medium</Checkbox>
+                        <Checkbox value="Large">Large</Checkbox>
+                    </CheckboxGroup>
                 </div>
             </div>
             <div className="flex">
@@ -249,34 +245,40 @@ export default function Page({params}) {
         > 
             {another.map((Shirt) => (
                 <SwiperSlide key = {Shirt.key} style={{width:"auto", height:"500"}}>
-                    <Card sx={{ maxHeight : 500 }} style={{margin:"2rem"}} className="bg-blue-950 shadow-2xl shadow-indigo-500/50">
-                        <CardHeader
-                            className = "text-center text-white"
-                            title = {Shirt.name}
-                        />
-                        <div className="bg-white h-[300px] w-[300px] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ...">
-                            <Image style={{height:'300px', width:'auto',margin:'auto', padding:'1rem'}} src={`/${Shirt.image[0]}`} width={500} height={350} alt="Photo"></Image>
-                        </div>
-                        <CardContent>
-                            <Typography className="text-center text-white font-bold" variant="body2" color="text.secondary">
-                            {Shirt.details}
-                            </Typography>
-                        </CardContent>
-                        <StyledRating
-                            style={{marginLeft:"0.5rem"}}
-                            name="customized-color"
-                            defaultValue={Shirt.review}
-                            precision={0.5}
-                            icon={<FavoriteIcon fontSize="inherit" />}
-                            emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
-                            readOnly
-                        />
-                        <CardActions>
-                            <Button className = "bg-pink-500" style={{marginRight:"1rem"}} variant="contained" endIcon={<SendIcon />}>
-                                <Link href = {`../${Shirt.link}`}>BUY NOW</Link>
-                            </Button>
-                            <div><p className="text-white font-bold font-sans ...">₹{Shirt.price}</p></div>
-                        </CardActions>
+                    <Card isFooterBlurred className="bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 w-[350px] h-[550px] col-span-12 sm:col-span-5">
+                        <CardHeader className="flex-col">
+                            <p className="text-xl text-indigo-950 uppercase font-bold text-center underline">{Shirt.name}</p>
+                        </CardHeader>
+                        <CardBody className="z-0 overflow-visible p-0 bg-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                            <div className="m-auto">
+                            <Image
+                                alt="Card example background"
+                                className="w-auto h-[350px]"
+                                src={`/${Shirt.image[0]}`}
+                            />
+                            </div>
+                        </CardBody>
+                        <CardFooter className="flex flex-col z-1">
+                            <div>
+                                <StyledRating
+                                name="customized-color"
+                                defaultValue={Shirt.review}
+                                precision={0.5}
+                                icon={<FavoriteIcon fontSize="inherit" />}
+                                emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+                                readOnly
+                                />
+                            </div>
+                            <div>
+                                <p className="text-black text-md">{Shirt.details}</p>
+                            </div>
+                            <div className="flex justify-between">
+                                <p className="text-black text-xl font-bold mr-12">₹{price}</p>
+                                    <Button as={Link} href = {`../${Shirt.link}`} endContent={<SendIcon/>} className="text-lg" color="primary" radius="full" size="sm">
+                                        BUY NOW
+                                    </Button>
+                            </div>
+                        </CardFooter>
                     </Card>
                 </SwiperSlide>
             ))}

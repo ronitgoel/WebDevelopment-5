@@ -1,6 +1,6 @@
 'use client'
 import * as React from 'react'
-import Button from '@mui/material/Button';
+import { Button } from '@nextui-org/react';
 import Link from 'next/link';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { useContext } from 'react';
@@ -17,8 +17,8 @@ export default function Table({no, name, price, link, array}) {
         <td className = "text-md md:text-3xl text-center rounded-lg">{no}</td>
         <td className = "text-md md:text-3xl text-center rounded-lg">{name}</td>
         <td className = "text-md md:text-3xl text-center rounded-lg">{price}</td>
-        <td className = "text-md md:text-3xl text-center rounded-lg"><Button className="text-yellow-500 font-bold bg-red-500 hover:bg-slate-400" variant="text"><Link href = {`../${link}`}>See Your Product</Link></Button></td>
-        <td className = "text-md md:text-3xl text-center rounded-lg hover:bg-red-500"><Button onClick={() => {remove(array);}}><DeleteOutlineIcon style={{color:'black'}}></DeleteOutlineIcon></Button></td>
+        <td className = "text-md md:text-3xl text-center rounded-lg"><Button as={Link} href = {`../${link}`} className="text-yellow-500 font-bold bg-blue-900" variant="solid">See Your Product</Button></td>
+        <td className = "text-md md:text-3xl text-center rounded-lg"><Button className="bg-yellow-500 hover:bg-red-500" variant="solid" endContent={<DeleteOutlineIcon/>} onClick={() => {remove(array);}}></Button></td>
     </tr>
 )
 }

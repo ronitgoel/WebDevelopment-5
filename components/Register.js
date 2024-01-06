@@ -5,6 +5,7 @@ import GoogleIcon from '@mui/icons-material/Google';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
+import { Button } from '@nextui-org/react';
 
 export default function Register() {
     const [name, setname] = React.useState("");
@@ -123,15 +124,15 @@ export default function Register() {
                     </p>
                 </div>
             </div>
-            <div className="basis-2/6 bg-indigo-500 bg-opacity-60 rounded-2xl mt-8 ml-8 mr-8 mb-8 lg:mt-[20rem] lg:ml-[6rem]" style = {{height:'15rem'}}>
-                <p className="font-bold mb-8 mt-6 lg:mt-2 text-center text-2xl text-yellow-300">
+            <div className="basis-2/6 bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 rounded-2xl mt-8 ml-8 mr-8 mb-8 lg:mt-[20rem] lg:ml-[6rem]" style = {{height:'15rem'}}>
+                <p className="font-bold mb-8 mt-6 lg:mt-2 text-center text-2xl text-indigo-950">
                     Login With Social Networks
                 </p>
-                <button onClick={() => signIn("google")} type="submit" className="flex w-full justify-center rounded-md px-3 py-1.5 text-xl font-semibold leading-6 text-white shadow-sm hover:text-red-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"><GoogleIcon></GoogleIcon>Login With Google</button>
+                <Button onClick={() => signIn("google")} type="submit" color="danger" className="flex m-auto w-[300px] justify-center rounded-md px-3 py-1.5 text-xl font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"><GoogleIcon></GoogleIcon>Login With Google</Button>
                 <p className="font-bold text-center text-2xl text-orange-400">
                     OR
                 </p>
-                <button onClick={() => signIn("github")} type="submit" className="flex w-full justify-center rounded-md px-3 py-1.5 mb-2 text-xl font-semibold leading-6 text-white shadow-sm hover:text-red-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"><GitHubIcon></GitHubIcon>Login With Github</button>
+                <Button onClick={() => signIn("github")} type="submit" color="danger" className="flex m-auto w-[300px] justify-center rounded-md px-3 py-1.5 mb-2 text-xl font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"><GitHubIcon></GitHubIcon>Login With Github</Button>
             </div>
             <div className="basis-1/6"></div>
         </div>
