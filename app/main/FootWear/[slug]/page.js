@@ -155,16 +155,16 @@ export default function Page({params}) {
         className="mySwiper w-[350px] sm:w-[400px] h-[350px] sm:h-[400px] bg-white rounded-2xl"
         >
             <SwiperSlide>
-            <Image className="mySwiper w-auto h-[350px] sm:h-[400px] m-auto" alt="ecommerce" width={500} height={500} src={`/${image[0]}`}></Image>
+            <Image className="mySwiper h-auto w-[350px] sm:w-[400px] mt-[100px]" alt="ecommerce" width={500} height={500} src={`/${image[0]}`}></Image>
             </SwiperSlide>
             <SwiperSlide>
-            <Image className="mySwiper w-auto h-[350px] sm:h-[400px] m-auto" alt="ecommerce" width={500} height={500} src={`/${image[0]}`}></Image>
+            <Image className="mySwiper h-auto w-[350px] sm:w-[400px] mt-[100px]" alt="ecommerce" width={500} height={500} src={`/${image[0]}`}></Image>
             </SwiperSlide>
             <SwiperSlide>
-            <Image className="mySwiper w-auto h-[350px] sm:h-[400px] m-auto" alt="ecommerce" width={500} height={500} src={`/${image[0]}`}></Image>
+            <Image className="mySwiper h-auto w-[350px] sm:w-[400px] mt-[100px]" alt="ecommerce" width={500} height={500} src={`/${image[0]}`}></Image>
             </SwiperSlide>
             <SwiperSlide>
-            <Image className="mySwiper w-auto h-[350px] sm:h-[400px] m-auto" alt="ecommerce" width={500} height={500} src={`/${image[0]}`}></Image>
+            <Image className="mySwiper h-auto w-[350px] sm:w-[400px] mt-[100px]" alt="ecommerce" width={500} height={500} src={`/${image[0]}`}></Image>
             </SwiperSlide>
         </Swiper>
         <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
