@@ -4,6 +4,7 @@ import * as React from 'react';
 import { useContext } from 'react';
 import Link from 'next/link';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import CategoryIcon from '@mui/icons-material/Category';
 import { CartContext } from '@/components/Cart';
 import Wishlist from '@/components/Wishlist';
 import Likelist from '@/components/Likelist';
@@ -60,62 +61,39 @@ let nav2 = "Sign Up";
     return (
       <div>
         <Navbar
-          className="dark bg-warning-400 backdrop-sepia-0 backdrop-blur-sm bg-opacity-50"
-          isBordered="true"
+          position="static"
+          className="bg-white"
+          isBordered='true'
           isMenuOpen={isMenuOpen}
           onMenuOpenChange={setIsMenuOpen}
         >
           <NavbarContent className="sm:hidden" justify="start">
-            <NavbarMenuToggle
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            />
-          </NavbarContent>
-
-          <NavbarContent className="sm:hidden" justify="center">
+            <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
             <NavbarBrand>
-                <Button
-                  as={Link}
-                  href="/"
-                  color="danger"
-                  variant="solid"
-                  size="md"
-                  radius="md"
-                  className="font-bold text-white text-lg"
-                >
-                  DEVCART
-                </Button>
+              <Link href="/"><div className="font-bold text-lg font-serif">SWIFTCART</div></Link>
+            </NavbarBrand>
+          </NavbarContent>
+          
+          <NavbarContent className="hidden sm:flex">
+            <NavbarBrand>
+              <Link href="/"><div className="font-bold sm:text-xl md:text-3xl lg:text-4xl font-serif">SWIFTCART</div></Link>
             </NavbarBrand>
           </NavbarContent>
 
-          <NavbarContent className="hidden sm:flex gap-4">
-            <NavbarBrand>
-                <Button
-                  as={Link}
-                  href="/"
-                  color="danger"
-                  variant="solid"
-                  size="lg"
-                  radius="md"
-                  className="font-bold text-white text-lg"
-                >
-                  DEVCART
-                </Button>
-            </NavbarBrand>
-          </NavbarContent>
-
-          <NavbarContent className="hidden sm:flex gap-4" justify="center">
+          <NavbarContent className="hidden sm:flex md:mr-10">
             <Dropdown>
               <NavbarItem>
                 <DropdownTrigger>
                   <Button
                     disableRipple
-                    className="md:w-[300px] lg:w-[400px] p-0 bg-indigo-950 md:text-lg lg:text-2xl font-bold text-yellow-500"
+                    className="md:w-[300px] lg:w-[400px] text-md justify-between font-bold text-black font-sans"
                     radius="md"
-                    variant="solid"
+                    variant="bordered"
                     size="lg"
                     color="danger"
                   >
                     Select Your Category
+                    <CategoryIcon style={{fontSize:'50px'}}></CategoryIcon>
                   </Button>
                 </DropdownTrigger>
               </NavbarItem>
@@ -127,7 +105,9 @@ let nav2 = "Sign Up";
                 }}
               >
                 {menuItems.map((item, index) => (
-                  <DropdownItem key={`${item}-${index}`}>{item}</DropdownItem>
+                  <DropdownItem key={`${item}-${index}`}>
+                      {item}
+                  </DropdownItem>
                 ))}
               </DropdownMenu>
             </Dropdown>
@@ -135,18 +115,12 @@ let nav2 = "Sign Up";
 
           <NavbarContent justify="end">
             <NavbarItem className="hidden sm:flex">
-                <Button
-                  as={Link}
-                  href="/main/Cart"
-                  color="danger"
-                  variant="solid"
-                  size="md"
-                  radius="md"
-                  className="font-bold text-white text-lg"
-                >
-                  <ShoppingCartOutlinedIcon className="inline-block"></ShoppingCartOutlinedIcon>
-                  Cart ({Cart.length})
-                </Button>
+            <div className="text-lg font-sans">
+            <Link href="/main/Cart">
+                <ShoppingCartOutlinedIcon style={{fontSize:'30px'}} className="inline-block"></ShoppingCartOutlinedIcon>
+                Cart ({Cart.length})
+            </Link>
+            </div>
             </NavbarItem>
             <NavbarItem>
               {
@@ -175,41 +149,34 @@ let nav2 = "Sign Up";
                   size="md"
                   src={session?.user?.image}
                   showFallback
-                  fallback={<Avatar src="/Profile.png" alt="profile"></Avatar>}
+                  fallback={<Avatar src='/Profile.png' alt='profile'></Avatar>}
                 />
               </DropdownTrigger>
               <DropdownMenu aria-label="Profile Actions" variant="flat">
-                <DropdownItem
-                  key="profile"
-                  className="h-14 gap-2 text-center text-indigo-950 font-bold bg-warning-400"
-                >
+                <DropdownItem key="profile" className="h-14 gap-2 text-center text-indigo-950 font-bold bg-warning-400">
                   <p className="font-semibold">Welcome Back</p>
                   <p className="font-semibold">{nav1}</p>
                 </DropdownItem>
-                {list.map((item, index) => (
-                  <DropdownItem key={`${item}-${index}`}>{item}</DropdownItem>
-                ))}
+                  {list.map((item, index) => (
+                    <DropdownItem key={`${item}-${index}`}>
+                        {item}
+                    </DropdownItem>
+                  ))}
               </DropdownMenu>
             </Dropdown>
           </NavbarContent>
 
           <NavbarMenu>
             <NavbarItem className="flex sm:hidden justify-center">
-                <Button
-                  href="/main/Cart"
-                  as={Link}
-                  color="danger"
-                  variant="solid"
-                  size="md"
-                  radius="md"
-                  className="font-bold text-white text-lg"
-                >
-                  <ShoppingCartOutlinedIcon className="inline-block"></ShoppingCartOutlinedIcon>
-                  Cart ({Cart.length})
-                </Button>
+            <Button as={Link} href="/main/Cart" color="danger" variant="solid" size="md" radius="md" className="font-bold text-white text-lg">
+                <ShoppingCartOutlinedIcon className="inline-block"></ShoppingCartOutlinedIcon>
+                Cart ({Cart.length})
+            </Button>
             </NavbarItem>
             {menuItems.map((item, index) => (
-              <NavbarMenuItem key={`${item}-${index}`}>{item}</NavbarMenuItem>
+              <NavbarMenuItem key={`${item}-${index}`}>
+                  {item}
+              </NavbarMenuItem>
             ))}
           </NavbarMenu>
         </Navbar>

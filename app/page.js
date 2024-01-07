@@ -19,6 +19,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { CartContext } from '@/components/Cart';
 import { signOut, useSession } from 'next-auth/react';
+import CategoryIcon from '@mui/icons-material/Category';
 
 const menuItems = [
   <div key = {1}>
@@ -63,40 +64,39 @@ export default function Home() {
   return (
      <div>
         <Navbar
-          className="dark bg-warning-400 backdrop-sepia-0 backdrop-blur-sm bg-opacity-50"
+          position="static"
+          className="bg-white"
           isBordered='true'
           isMenuOpen={isMenuOpen}
           onMenuOpenChange={setIsMenuOpen}
         >
           <NavbarContent className="sm:hidden" justify="start">
             <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
-          </NavbarContent>
-
-          <NavbarContent className="sm:hidden" justify="center">
             <NavbarBrand>
-              <Button as={Link} href="/" color="danger" variant="solid" size="md" radius="md" className="font-bold text-white text-lg">DEVCART</Button>
+              <Link href="/"><div className="font-bold text-lg font-serif">SWIFTCART</div></Link>
+            </NavbarBrand>
+          </NavbarContent>
+          
+          <NavbarContent className="hidden sm:flex">
+            <NavbarBrand>
+              <Link href="/"><div className="font-bold sm:text-xl md:text-3xl lg:text-4xl font-serif">SWIFTCART</div></Link>
             </NavbarBrand>
           </NavbarContent>
 
-          <NavbarContent className="hidden sm:flex gap-4">
-            <NavbarBrand>
-            <Button as={Link} href="/" color="danger" variant="solid" size="lg" radius="md" className="font-bold text-white text-lg">DEVCART</Button>
-            </NavbarBrand>
-          </NavbarContent>
-
-          <NavbarContent className="hidden sm:flex gap-4" justify="center">
+          <NavbarContent className="hidden sm:flex md:mr-10">
             <Dropdown>
               <NavbarItem>
                 <DropdownTrigger>
                   <Button
                     disableRipple
-                    className="md:w-[300px] lg:w-[400px] p-0 bg-indigo-950 md:text-lg lg:text-2xl font-bold text-yellow-500"
+                    className="md:w-[300px] lg:w-[400px] text-md justify-between font-bold text-black font-sans"
                     radius="md"
-                    variant="solid"
+                    variant="bordered"
                     size="lg"
                     color="danger"
                   >
                     Select Your Category
+                    <CategoryIcon style={{fontSize:'50px'}}></CategoryIcon>
                   </Button>
                 </DropdownTrigger>
               </NavbarItem>
@@ -118,10 +118,12 @@ export default function Home() {
 
           <NavbarContent justify="end">
             <NavbarItem className="hidden sm:flex">
-            <Button as={Link} href="/main/Cart" color="danger" variant="solid" size="md" radius="md" className="font-bold text-white text-lg">
-                <ShoppingCartOutlinedIcon className="inline-block"></ShoppingCartOutlinedIcon>
+            <div className="text-lg font-sans">
+            <Link href="/main/Cart">
+                <ShoppingCartOutlinedIcon style={{fontSize:'30px'}} className="inline-block"></ShoppingCartOutlinedIcon>
                 Cart ({Cart.length})
-            </Button>
+            </Link>
+            </div>
             </NavbarItem>
             <NavbarItem>
               {
@@ -181,6 +183,8 @@ export default function Home() {
             ))}
           </NavbarMenu>
         </Navbar>
+        <div className="bg-slate-200">
+        <div className="p-4 flex md:hidden absolute z-0 left-0 right-0">
         <Swiper
           rewind={true}
           direction={'horizontal'}
@@ -193,106 +197,63 @@ export default function Home() {
             disableOnInteraction: true,
           }}
           modules={[Navigation, Autoplay]}
-          className="mySwiper h-[620px] md:h-[400px]"
+          className="mySwiper h-[600px] rounded-xl"
         >
-          <SwiperSlide className = "bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ...">
-            <div className="items-center flex flex-col md:flex-row">
-              <div className="flex flex-row basis-2/5 justify-center mt-8">
-                <Image className="rounded-lg w-auto h-[350px]" priority={true} src="/Image1.jpg" width={500} height={100} alt="clothes"></Image>
-              </div>
-              <div className="flex-row basis-1/5"></div>
-              <div className="w-[350px] h-auto md:w-auto md:h-[350px] text-center flex-row basis-1/5 bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 rounded-lg mt-4 mr-2 ml-2 sm:ml-0 sm:mr-0">
-                <div className = "md:mt-16 lg:mt-18 text-3xl text-center font-bold text-yellow-400 underline">Starting At Just ₹199</div>
-                <div className = "md:text-md lg:text-xl text-center font-bold">Deals On Top Brands</div>
-                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-300"><LocalShippingIcon></LocalShippingIcon>Free Delivery On First Order</div>
-                <br></br>
-                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-300"><TrendingUpIcon></TrendingUpIcon>Latest Trends</div>
-                <br></br>
-                <Button as={Link} href="/main/Clothing" color="success" className = "text-xl text-center font-bold text-white">Buy Now</Button>
-              </div>
-              <div className = "flex-row basis-1/5"></div>
-
-            </div>
+          <SwiperSlide>
+            <img alt="clothing" src="https://m.media-amazon.com/images/W/MEDIAX_792452-T1/images/G/31/img23/BAU-Dec/Laptops_Brand-Banners/Intel_Mainstream2_978x900._SS900_QL85_.jpg" height={350} width={350} className="m-auto w-auto h-[600px] rounded-xl"></img>
           </SwiperSlide>
-          <SwiperSlide className = "bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% ...">
-          <div className="items-center flex flex-col md:flex-row">
-              <div className="flex flex-row basis-2/5 justify-center mt-12">
-                <Image className="rounded-lg w-auto h-[250px] md:h-[320px]" src="/Image2.jpg" width={100} height={100} alt="shoes"></Image>
-              </div>
-              <div className="basis-1/5 "></div>
-              <div className="w-[350px] h-auto md:w-auto md:h-[350px] text-center flex-row basis-1/5 bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 rounded-lg mt-4 mr-2 ml-2 sm:ml-0 sm:mr-0">
-                <div className = "md:mt-16 lg:mt-18 text-3xl text-center font-bold text-yellow-400 underline">Under ₹499</div>
-                <div className = "md:text-md lg:text-xl text-center font-bold">Super Saver Weekend</div>
-                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-300"><LocalShippingIcon></LocalShippingIcon>Free Delivery On First Order</div>
-                <br></br>
-                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-300"><TrendingUpIcon></TrendingUpIcon>Latest Trends</div>
-                <br></br>
-                <Button as={Link} href="/main/FootWear" color="success" className = "text-xl text-center font-bold text-white">Buy Now</Button>
-              </div>
-              <div className = "basis-1/5"></div>
-            </div>
+          <SwiperSlide >
+          <img alt="clothing" src="https://images-eu.ssl-images-amazon.com/images/W/MEDIAX_792452-T1/images/G/31/img22/kmargso/Baby/SuperBottoms440x440.jpg" height={350} width={350} className="m-auto w-auto h-[600px] rounded-xl"></img>
           </SwiperSlide>
-          <SwiperSlide className = "bg-gradient-to-r from-pink-500 to-yellow-500 ...">
-          <div className="items-center flex flex-col md:flex-row">
-              <div className="flex flex-row basis-2/5 justify-center mt-12">
-                <Image className="rounded-lg w-auto h-[220px] md:h-[320px]" src="/Image3.jpg" width={500} height={400} alt="clothes"></Image>
-              </div>
-              <div className="basis-1/5 "></div>
-              <div className="w-[350px] h-auto md:w-auto md:h-[350px] text-center flex-row basis-1/5 bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 rounded-lg mt-4 mr-2 ml-2 sm:ml-0 sm:mr-0">
-                <div className = "md:mt-16 lg:mt-18 text-3xl text-center font-bold text-indigo-950 underline">Under ₹499</div>
-                <div className = "text-xl text-center font-bold">Water Bottles And Lunch Boxes<KitchenIcon></KitchenIcon></div>
-                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-300"><LocalShippingIcon></LocalShippingIcon>Free Delivery On First Order</div>
-                <br></br>
-                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-300"><TrendingUpIcon></TrendingUpIcon>Latest Trends</div>
-                <br></br>
-                <Button as={Link} href="/main/KitchenItems" color="success" className = "text-xl text-center font-bold text-white">Buy Now</Button>
-              </div>
-              <div className = "basis-1/5"></div>
-            </div>
+          <SwiperSlide>
+          <img alt="clothing" src="https://images-eu.ssl-images-amazon.com/images/W/MEDIAX_792452-T1/images/G/31/img17/Home/LA/LASA/2018/ACs._CB502902454_.jpg" height={350} width={350} className="m-auto w-auto h-[600px] rounded-xl"></img>
           </SwiperSlide>
-          <SwiperSlide className = "bg-gradient-to-r from-green-400 to-blue-500 ...">
-          <div className="items-center flex flex-col md:flex-row">
-              <div className="flex flex-row basis-2/5 justify-center mt-12">
-                <Image className="rounded-lg w-auto h-[240px] md:h-[320px]" src="/Image4.jpg" width={500} height={400} alt="clothes"></Image>
-              </div>
-              <div className="basis-1/5 "></div>
-              <div className="w-[350px] h-auto md:w-auto md:h-[350px] text-center flex-row basis-1/5 bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 rounded-lg mt-4 mr-2 ml-2 sm:ml-0 sm:mr-0">
-                <div className = "md:mt-16 lg:mt-18 text-3xl text-center font-bold text-indigo-950 underline">Under ₹99</div>
-                <div className = "text-xl text-center font-bold">BestSellers In Medicare<MedicationIcon></MedicationIcon></div>
-                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-300"><LocalShippingIcon></LocalShippingIcon>Free Delivery On First Order</div>
-                <br></br>
-                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-300"><TrendingUpIcon></TrendingUpIcon>Latest Trends</div>
-                <br></br>
-                <Button as={Link} href="/main/Medicare" color="success" className = "text-xl text-center font-bold text-white">Buy Now</Button>
-              </div>
-              <div className = "basis-1/5"></div>
-            </div>
+          <SwiperSlide>
+          <img alt="clothing" src="https://images-eu.ssl-images-amazon.com/images/W/MEDIAX_792452-T1/images/G/31/img17/Home/LA/LASA/2018/Ref._CB502902448_.jpg" height={350} width={350} className="m-auto w-auto h-[600px] rounded-xl"></img>
           </SwiperSlide>
-          <SwiperSlide className = "bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ...">
-          <div className="items-center flex flex-col md:flex-row">
-              <div className="flex flex-row basis-2/5 justify-center mt-8">
-                <Image className="rounded-lg w-auto h-[330px] md:h-[350px]" src="/Image5.jpg" width={500} height={400} alt="clothes"></Image>
-              </div>
-              <div className="basis-1/5 "></div>
-              <div className="w-[350px] h-auto md:w-auto md:h-[350px] text-center flex-row basis-1/5 bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 rounded-lg mt-4 mr-2 ml-2 sm:ml-0 sm:mr-0">
-                <div className = "md:mt-16 lg:mt-18 text-3xl text-center font-bold text-yellow-400 underline">Smartphones</div>
-                <div className = "text-xl text-center font-bold">Starting At ₹6,299</div>
-                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-300"><LocalShippingIcon></LocalShippingIcon>Free Delivery On First Order</div>
-                <br></br>
-                <div className = "text-lg text-center bg-purple-800 rounded-lg text-pink-300"><TrendingUpIcon></TrendingUpIcon>Latest Trends</div>
-                <br></br>
-                <Button as={Link} href="/main/SmartPhones" color="success" className = "text-xl text-center font-bold text-white">Buy Now</Button>
-              </div>
-              <div className = "basis-1/5"></div>
-            </div>
+          <SwiperSlide>
+          <img alt="clothing" src="https://m.media-amazon.com/images/G/31/img21/MA2023/DECWRS/tops/brands/USPA_978x1383._SY530_QL85_FMpng_.png" height={350} width={350} className="m-auto w-auto h-[600px] rounded-xl"></img>
           </SwiperSlide>
         </Swiper>
-        <div className="bg-slate-300">
+        </div>
+        <div className="p-4 hidden md:flex absolute z-0 left-0 right-0">
+        <Swiper
+          rewind={true}
+          direction={'horizontal'}
+          centeredSlides={true}
+          navigation={true}
+          slidesPerView={1}
+          spaceBetween={30}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: true,
+          }}
+          modules={[Navigation, Autoplay]}
+          className="mySwiper h-auto rounded-xl"
+        >
+          <SwiperSlide>
+            <img alt="clothing" src="https://images-eu.ssl-images-amazon.com/images/W/MEDIAX_792452-T1/images/G/31/img24/Consumables/SVD/Jan24/GW/Unrec_PC_Hero_3000x1200_ICICI._CB585113227_.jpg" height={350} width={350} className="w-full h-auto"></img>
+          </SwiperSlide>
+          <SwiperSlide >
+          <img alt="clothing" src="https://images-eu.ssl-images-amazon.com/images/W/MEDIAX_792452-T1/images/G/31/img2020/img21/apparelGW/jan24atf/unrec/hsbc/MA_3000._CB585877493_.jpg" height={350} width={350} className="w-full h-auto"></img>
+          </SwiperSlide>
+          <SwiperSlide>
+          <img alt="clothing" src="https://images-eu.ssl-images-amazon.com/images/W/MEDIAX_792452-T1/images/G/31/OHL/23/Central/BAU/NOv/Desktop_Hero_3000x1200_2_2x._CB574373355_.jpg" height={350} width={350} className="w-full h-auto"></img>
+          </SwiperSlide>
+          <SwiperSlide>
+          <img alt="clothing" src="https://images-eu.ssl-images-amazon.com/images/W/MEDIAX_792452-T1/images/G/31/img24/Beauty/GW/atf/janv6/PC-Hero-2._CB585567351_.jpg" height={350} width={350} className="w-full h-auto"></img>
+          </SwiperSlide>
+          <SwiperSlide>
+          <img alt="clothing" src="https://images-eu.ssl-images-amazon.com/images/W/MEDIAX_792452-T1/images/G/31/img22/Wireless/devjyoti/GW/Uber/Nov/D103625178_DesktopTallHero_3000x1200._CB574597993_.jpg" height={350} width={350} className="w-full h-auto"></img>
+          </SwiperSlide>
+        </Swiper>
+        </div>
         <br></br>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center gap-1">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center gap-1 relative mt-[620px] md:mt-[180px] lg:mt-[250px] xl:mt-[350px] z-1">
               <Card className = "bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
                 <CardHeader
                   title="Upto 40% Off | Baby Care And Expecting Mothers"
+                  className="md:bg-white"
                 />
                 <Image className="h-[358px] w-[500px]" src="/Card1.png" width={500} height={400} alt="Baby Care"></Image>
                 <CardContent>
@@ -302,6 +263,7 @@ export default function Home() {
               <Card className = "bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
                 <CardHeader
                   title="Combo Packs Of Shirts| Under ₹599"
+                  className="md:bg-white"
                 />
                 <Image className="h-[358px] w-[500px]" src="/Card2.png" width={500} height={400} alt="Shirts"></Image>
                 <CardContent>
@@ -311,6 +273,7 @@ export default function Home() {
               <Card className = "bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
                 <CardHeader
                   title="Automotive Essentials | Upto 60% off"
+                  className="lg:bg-white"
                 />
                 <Image className="h-[358px] w-[500px]" src="/Card3.png" width={500} height={400} alt="Automotive Essesntials"></Image>
                 <CardContent>
@@ -320,6 +283,7 @@ export default function Home() {
               <Card className = "bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ..." sx={{ maxWidth: 350}}>
                 <CardHeader
                   title="Under ₹499 | Pocket Friendly Fashion"
+                  className="xl:bg-white"
                 />
                 <Image className="h-[358px] w-[500px]" src="/Card4.png" width={500} height={400} alt="Fashion"></Image>
                 <CardContent>

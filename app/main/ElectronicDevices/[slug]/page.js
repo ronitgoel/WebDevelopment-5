@@ -134,8 +134,8 @@ export default function Page({params}) {
   return (
   <div className="text-gray-800 bg-yellow-500 body-font overflow-hidden py-24">
     <div className="lg:w-4/5 mx-auto flex flex-wrap">
-        <Swiper
-        style={{width: '400px', height: '400px', background: 'white'}}
+    <Swiper
+        
         effect={'cube'}
         grabCursor={true}
         navigation={true}
@@ -147,19 +147,19 @@ export default function Page({params}) {
         shadowScale: 0.94,
         }}
         modules={[EffectCube, Navigation, Pagination]}
-        className="mySwiper"
+        className="mySwiper w-[350px] sm:w-[400px] h-[350px] sm:h-[400px] bg-white rounded-2xl"
         >
             <SwiperSlide>
-            <Image  style={{height:'400px', width:'auto',margin:'auto'}} alt="ecommerce" width={500} height={500} src={`/${image[0]}`}></Image>
+            <Image className="mySwiper w-auto h-[350px] sm:h-[400px] m-auto" alt="ecommerce" width={500} height={500} src={`/${image[0]}`}></Image>
             </SwiperSlide>
             <SwiperSlide>
-            <Image  style={{height:'400px', width:'auto',margin:'auto'}} alt="ecommerce" width={500} height={500} src={`/${image[0]}`}></Image>
+            <Image className="mySwiper w-auto h-[350px] sm:h-[400px] m-auto" alt="ecommerce" width={500} height={500} src={`/${image[0]}`}></Image>
             </SwiperSlide>
             <SwiperSlide>
-            <Image  style={{height:'400px', width:'auto',margin:'auto'}} alt="ecommerce" width={500} height={500} src={`/${image[0]}`}></Image>
+            <Image className="mySwiper w-auto h-[350px] sm:h-[400px] m-auto" alt="ecommerce" width={500} height={500} src={`/${image[0]}`}></Image>
             </SwiperSlide>
             <SwiperSlide>
-            <Image  style={{height:'400px', width:'auto',margin:'auto'}} alt="ecommerce" width={500} height={500} src={`/${image[0]}`}></Image>
+            <Image className="mySwiper w-auto h-[350px] sm:h-[400px] m-auto" alt="ecommerce" width={500} height={500} src={`/${image[0]}`}></Image>
             </SwiperSlide>
         </Swiper>
         <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
@@ -196,15 +196,19 @@ export default function Page({params}) {
                     </CheckboxGroup>
                 </div>
             </div>
-            <div className="flex">
-                <span className="title-font font-medium text-2xl text-gray-900">₹{price}</span>
-                <Button onClick={() => {add(ele);}} className="flex ml-auto text-white bg-indigo-700 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add To Cart</Button>
-                <Button onClick={() => {wish(ele);}} className="rounded-full w-10 h-10 bg-indigo-700 p-0 border-1 inline-flex items-center justify-center ml-4 hover:bg-indigo-600">
+            <div className="flex md:flex-row flex-col">
+                <div className="flex justify-between">
+                <span className="title-font font-medium md:mr-2 text-2xl text-gray-900">₹{price}</span>
+                <Button onClick={() => {add(ele);}} className="flex ml-auto text-white bg-indigo-700 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded mr-2 md:mr-0">Add To Cart</Button>
+                </div>
+                <div className="flex">
+                <Button onClick={() => {wish(ele);}} className="rounded-full w-10 h-10 bg-indigo-700 p-0 border-1 inline-flex items-center justify-center md:mr-0 mr-2 md:ml-4 hover:bg-indigo-600">
                     <FavoriteIcon style={{color:'red'}}></FavoriteIcon>
                 </Button>
-                <Button onClick={() => {like(ele);}} className="rounded-full w-10 h-10 bg-indigo-700 p-0 border-1 inline-flex items-center justify-center ml-4 hover:bg-indigo-600">
+                <Button onClick={() => {like(ele);}} className="rounded-full w-10 h-10 bg-indigo-700 p-0 border-1 inline-flex items-center justify-center md:ml-4 hover:bg-indigo-600">
                     <ThumbUpIcon style={{color:'red'}}></ThumbUpIcon>
                 </Button>
+                </div>
                 <ToastContainer
                     position="bottom-left"
                     autoClose={3000}

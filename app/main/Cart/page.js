@@ -29,7 +29,7 @@ export default function Page() {
       return (
            <div  style={{padding:'2rem',backgroundColor:"#E3242B", borderWidth:'2rem', borderColor:'#FFC300'}}>
               <div className="text-5xl text-center font-bold" style={{color:"#FFBB00"}}>
-                Your DEVCART Is Empty
+                Your SWIFTCART Is Empty
                 <SentimentVeryDissatisfiedIcon fontSize='large'></SentimentVeryDissatisfiedIcon>
               </div>
               <div className="text-3xl text-center font-bold" style={{margin:'2rem', color:"#FFBB00"}}>

@@ -10,7 +10,7 @@ import Scroll from '@/components/scroll';
 
 const inter = Inter({ subsets: ['latin'] })
 export const metadata = {
-  title: 'DevCart',
+  title: 'SWIFTCART',
   description: 'A Site For Those Who Love Shopping',
 }
 
@@ -22,16 +22,16 @@ export default function RootLayout({ children }) {
         <Link rel="manifest" href="/site.webmanifest"/>
       </Head>
       <body className={inter.className} suppressHydrationWarning={true}>
+        <Scroll></Scroll>
         <Session>
           <Cart>
             <Providers>
-              <Scroll></Scroll>
               {children}
             </Providers>
           </Cart>
         </Session>
-        <div className = "footer bg-indigo-950">
-          <div className = "text-center pt-4"><Link className = "text-3xl font-black text-orange-400 hover:text-amber-400" href="/">DEVCART</Link></div>
+        <div className = "footer" style={{backgroundColor:'#131A22'}}>
+          <div className = "text-center pt-4"><Link className = "text-3xl font-black text-orange-400 hover:text-amber-400 font-serif" href="/">SWIFTCART</Link></div>
           <div className="flex flex-row text-center mt-6">
             <div className="basis-1/4 text-orange-50 text-xs sm:text-md md:text-lg">
                 <dt>AbeBooks</dt>
@@ -58,7 +58,7 @@ export default function RootLayout({ children }) {
               Privacy Notice
             </div>
             <div className = "text-center text-slate-200 text-xs sm:text-md md:text-lg">
-              © 1996-2023, DevCart.com, Inc. or its affiliates
+              © 1996-2023, SWIFTCART.com, Inc. or its affiliates
             </div>
           </div>
         </div>

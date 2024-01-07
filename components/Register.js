@@ -68,7 +68,7 @@ export default function Register() {
             <div className="rounded-lg basis-2/6 mt-8 ml-8 mr-8 mb-8 lg:mb-5" style = {{backgroundImage: 'url("https://i.pinimg.com/736x/5d/73/ea/5d73eaabb25e3805de1f8cdea7df4a42--tumblr-backgrounds-iphone-phone-wallpapers-iphone-wallaper-tumblr.jpg")',marginTop:'2rem'}}>
                 <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
                     <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                        <div className = "text-center"><Link className = "text-5xl font-black text-orange-600 hover:text-amber-400" href="/">DEVCART</Link></div>
+                        <div className = "text-center"><Link className = "text-5xl font-black text-orange-600 hover:text-amber-400 font-serif" href="/">SWIFTCART</Link></div>
                         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Enter Your Details</h2>
                     </div>
                     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -115,13 +115,16 @@ export default function Register() {
                             </div>
                         </form>
                     </div>
+                    <br></br>
+                    <div className="basis-2/6 bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 rounded-2xl">
                     <p className="mt-10 text-center text-sm font-bold text-black">
-                       By continuing, you agree to DevCart Conditions of Use and Privacy Notice.
+                       By continuing, you agree to SWIFTCART Conditions of Use and Privacy Notice.
                     </p>
-                    <p className="mt-10 text-center text-sm text-black">
+                    <p className="mt-10 text-center text- text-black">
                         Already have an account?
                         <Link href="./SignIn" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Login To Your Account</Link>
                     </p>
+                    </div>
                 </div>
             </div>
             <div className="basis-2/6 bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-20 rounded-2xl mt-8 ml-8 mr-8 mb-8 lg:mt-[20rem] lg:ml-[6rem]" style = {{height:'15rem'}}>

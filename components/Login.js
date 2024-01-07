@@ -29,7 +29,7 @@ export default function Login() {
         <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8" style = {{backgroundImage: 'url("https://i.pinimg.com/originals/4d/96/08/4d9608e972721c62bc888af8d4531747.jpg")', backgroundSize: 'cover', backgroundRepeat: 'no-repeat',}}>
             <div className="bg-white backdrop-sepia-0 backdrop-blur-sm bg-opacity-50 rounded-lg w-[330px] sm:w-[400px] m-auto">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm mt-6">
-                    <div className = "text-center"><Link className = "text-5xl font-black text-orange-600 hover:text-amber-400" href="/">DEVCART</Link></div>
+                    <div className = "text-center"><Link className = "text-5xl font-black text-orange-600 hover:text-amber-400  font-serif" href="/">SWIFTCART</Link></div>
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Enter Your Details</h2>
                 </div>
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -61,7 +61,7 @@ export default function Login() {
                     </form>
                     <p className="font-bold mt-10 text-center text-md sm:text-lg text-black mb-6">
                         Don&apos;t have an account?
-                        <Link href="./Signup" className="font-bold leading-6 bg-yellow-400 text-pink-600 hover:text-blue-800"> Register Yourself</Link>
+                        <Link href="./Signup" className="rounded-lg font-bold leading-6 bg-yellow-400 text-pink-600 hover:text-blue-800"> Register Yourself</Link>
                     </p>
                 </div>
             </div>
