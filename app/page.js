@@ -200,19 +200,19 @@ export default function Home() {
           className="mySwiper h-[600px] rounded-xl"
         >
           <SwiperSlide>
-            <img alt="clothing" src="https://m.media-amazon.com/images/W/MEDIAX_792452-T1/images/G/31/img23/BAU-Dec/Laptops_Brand-Banners/Intel_Mainstream2_978x900._SS900_QL85_.jpg" height={350} width={350} className="m-auto w-auto h-[600px] rounded-xl"></img>
+            <img alt="clothing" src="/smallbanner1.png" height={350} width={350} className="m-auto w-auto h-[600px] rounded-xl"></img>
           </SwiperSlide>
           <SwiperSlide >
-          <img alt="clothing" src="https://images-eu.ssl-images-amazon.com/images/W/MEDIAX_792452-T1/images/G/31/img22/kmargso/Baby/SuperBottoms440x440.jpg" height={350} width={350} className="m-auto w-auto h-[600px] rounded-xl"></img>
+          <img alt="clothing" src="/smallbanner2.png" height={350} width={350} className="m-auto w-auto h-[600px] rounded-xl"></img>
           </SwiperSlide>
           <SwiperSlide>
-          <img alt="clothing" src="https://images-eu.ssl-images-amazon.com/images/W/MEDIAX_792452-T1/images/G/31/img17/Home/LA/LASA/2018/ACs._CB502902454_.jpg" height={350} width={350} className="m-auto w-auto h-[600px] rounded-xl"></img>
+          <img alt="clothing" src="/smallbanner3.png" height={350} width={350} className="m-auto w-auto h-[600px] rounded-xl"></img>
           </SwiperSlide>
           <SwiperSlide>
-          <img alt="clothing" src="https://images-eu.ssl-images-amazon.com/images/W/MEDIAX_792452-T1/images/G/31/img17/Home/LA/LASA/2018/Ref._CB502902448_.jpg" height={350} width={350} className="m-auto w-auto h-[600px] rounded-xl"></img>
+          <img alt="clothing" src="/smallbanner4.png" height={350} width={350} className="m-auto w-auto h-[600px] rounded-xl"></img>
           </SwiperSlide>
           <SwiperSlide>
-          <img alt="clothing" src="https://m.media-amazon.com/images/G/31/img21/MA2023/DECWRS/tops/brands/USPA_978x1383._SY530_QL85_FMpng_.png" height={350} width={350} className="m-auto w-auto h-[600px] rounded-xl"></img>
+          <img alt="clothing" src="/smallbanner5.png" height={350} width={350} className="m-auto w-auto h-[600px] rounded-xl"></img>
           </SwiperSlide>
         </Swiper>
         </div>
@@ -232,19 +232,19 @@ export default function Home() {
           className="mySwiper h-auto rounded-xl"
         >
           <SwiperSlide>
-            <img alt="clothing" src="https://images-eu.ssl-images-amazon.com/images/W/MEDIAX_792452-T1/images/G/31/img24/Consumables/SVD/Jan24/GW/Unrec_PC_Hero_3000x1200_ICICI._CB585113227_.jpg" height={350} width={350} className="w-full h-auto"></img>
+            <img alt="clothing" src="/banner1.jpg" height={350} width={350} className="w-full h-auto"></img>
           </SwiperSlide>
           <SwiperSlide >
-          <img alt="clothing" src="https://images-eu.ssl-images-amazon.com/images/W/MEDIAX_792452-T1/images/G/31/img2020/img21/apparelGW/jan24atf/unrec/hsbc/MA_3000._CB585877493_.jpg" height={350} width={350} className="w-full h-auto"></img>
+          <img alt="clothing" src="/banner2.jpg" height={350} width={350} className="w-full h-auto"></img>
           </SwiperSlide>
           <SwiperSlide>
-          <img alt="clothing" src="https://images-eu.ssl-images-amazon.com/images/W/MEDIAX_792452-T1/images/G/31/OHL/23/Central/BAU/NOv/Desktop_Hero_3000x1200_2_2x._CB574373355_.jpg" height={350} width={350} className="w-full h-auto"></img>
+          <img alt="clothing" src="/banner3.jpg" height={350} width={350} className="w-full h-auto"></img>
           </SwiperSlide>
           <SwiperSlide>
-          <img alt="clothing" src="https://images-eu.ssl-images-amazon.com/images/W/MEDIAX_792452-T1/images/G/31/img24/Beauty/GW/atf/janv6/PC-Hero-2._CB585567351_.jpg" height={350} width={350} className="w-full h-auto"></img>
+          <img alt="clothing" src="/banner4.jpg" height={350} width={350} className="w-full h-auto"></img>
           </SwiperSlide>
           <SwiperSlide>
-          <img alt="clothing" src="https://images-eu.ssl-images-amazon.com/images/W/MEDIAX_792452-T1/images/G/31/img22/Wireless/devjyoti/GW/Uber/Nov/D103625178_DesktopTallHero_3000x1200._CB574597993_.jpg" height={350} width={350} className="w-full h-auto"></img>
+          <img alt="clothing" src="/banner5.jpg" height={350} width={350} className="w-full h-auto"></img>
           </SwiperSlide>
         </Swiper>
         </div>
