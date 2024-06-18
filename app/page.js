@@ -184,7 +184,7 @@ export default function Home() {
           </NavbarMenu>
         </Navbar>
         <div className="bg-slate-200">
-        <div className="p-4 flex md:hidden absolute z-0 left-0 right-0">
+        <div className="p-4 block md:hidden absolute z-0 left-0 right-0">
         <Swiper
           rewind={true}
           direction={'horizontal'}
@@ -216,37 +216,37 @@ export default function Home() {
           </SwiperSlide>
         </Swiper>
         </div>
-        <div className="p-4 hidden md:flex absolute z-0 left-0 right-0">
-        <Swiper
-          rewind={true}
-          direction={'horizontal'}
-          centeredSlides={true}
-          navigation={true}
-          slidesPerView={1}
-          spaceBetween={30}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: true,
-          }}
-          modules={[Navigation, Autoplay]}
-          className="mySwiper h-auto rounded-xl"
-        >
-          <SwiperSlide>
-            <img alt="clothing" src="/banner1.jpg" height={350} width={350} className="w-full h-auto"></img>
-          </SwiperSlide>
-          <SwiperSlide >
-          <img alt="clothing" src="/banner2.jpg" height={350} width={350} className="w-full h-auto"></img>
-          </SwiperSlide>
-          <SwiperSlide>
-          <img alt="clothing" src="/banner3.jpg" height={350} width={350} className="w-full h-auto"></img>
-          </SwiperSlide>
-          <SwiperSlide>
-          <img alt="clothing" src="/banner4.jpg" height={350} width={350} className="w-full h-auto"></img>
-          </SwiperSlide>
-          <SwiperSlide>
-          <img alt="clothing" src="/banner5.jpg" height={350} width={350} className="w-full h-auto"></img>
-          </SwiperSlide>
-        </Swiper>
+        <div className="p-4 hidden md:block absolute z-0 left-0 right-0">
+          <Swiper
+            rewind={true}
+            direction={'horizontal'}
+            centeredSlides={true}
+            navigation={true}
+            slidesPerView={1}
+            spaceBetween={30}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: true,
+            }}
+            modules={[Navigation, Autoplay]}
+            className="mySwiper h-auto rounded-xl"
+          >
+            <SwiperSlide>
+              <img alt="clothing" src="/banner1.jpg" height={350} width={350} className="w-full h-auto"></img>
+            </SwiperSlide>
+            <SwiperSlide >
+            <img alt="clothing" src="/banner2.jpg" height={350} width={350} className="w-full h-auto"></img>
+            </SwiperSlide>
+            <SwiperSlide>
+            <img alt="clothing" src="/banner3.jpg" height={350} width={350} className="w-full h-auto"></img>
+            </SwiperSlide>
+            <SwiperSlide>
+            <img alt="clothing" src="/banner4.jpg" height={350} width={350} className="w-full h-auto"></img>
+            </SwiperSlide>
+            <SwiperSlide>
+            <img alt="clothing" src="/banner5.jpg" height={350} width={350} className="w-full h-auto"></img>
+            </SwiperSlide>
+          </Swiper>
         </div>
         <br></br>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center gap-1 relative mt-[620px] md:mt-[180px] lg:mt-[250px] xl:mt-[350px] z-1">
